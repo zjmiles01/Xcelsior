@@ -1,0 +1,1898 @@
+# Non-US cities with population >= 300,000 (GeoNames, CC-BY 4.0).
+# A bare location string matching one of these names refuses to
+# resolve to a small same-named US town (London != London, OH).
+6th of october city
+aba
+abeokuta
+abidjan
+abobo
+abomey-calavi
+abu al-kahsib
+abu dhabi
+abu ghurayb
+abuja
+acapulco de juarez
+accra
+adachi
+adana
+addis ababa
+adelaide
+aden
+ado-ekiti
+agadir
+agartala
+agege
+agra
+aguascalientes
+ahilyanagar
+ahmedabad
+ahvaz
+aihara
+ajegunle
+ajman
+ajmer
+akashi
+akita
+akola
+akowonjo
+aksaray
+aktobe
+akure
+al 'amarah
+al ahmadi
+al ain city
+al basrah al qadimah
+al diwaniyah
+al fayyum
+al hasakah
+al hillah
+al hoceima
+al hudaydah
+al kharj
+al khusus
+al mahallah al kubra
+al mahmudiyah
+al mansurah
+al mawsil al jadidah
+al qadarif
+al qahirah al jadidah
+al-kut
+alanya
+aleppo
+alexandria
+algiers
+alicante
+aligarh
+alimosho
+almaty
+alor setar
+alvaro obregon
+alwar
+amagasaki
+ambato
+ambattur
+ambon
+amman
+amravati
+amritsar
+amsterdam
+an nhon
+ananindeua
+anapolis
+andijon
+angeles city
+ankang
+ankara
+annaba
+anqing
+anqiu
+ansan-si
+anshan
+anshun
+antakya
+antalya
+antananarivo
+antipolo
+antofagasta
+antwerp
+anyang
+anyang-si
+aparecida de goiania
+aqsu
+ar raqqah
+aracaju
+arak
+ardabil
+arequipa
+arifwala
+arkhangel'sk
+armenia
+arusha
+asahikawa
+asansol
+ashgabat
+asmara
+assiut
+astana
+astrakhan
+asuncion
+aswan
+atasehir
+athens
+auckland
+augsburg
+aurangabad
+avadi
+avellaneda
+awasa
+azcapotzalco
+bac giang
+bac tu liem
+bacolod city
+bacoor
+bafoussam
+bagcilar
+baghdad
+bahawalpur
+bahcelievler
+bahir dar
+baicheng
+baise
+baku
+balbala
+balikpapan
+ballari
+bamako
+bamenda
+banan
+bandar abbas
+bandar lampung
+bandarban
+bandung
+bangkok
+bangui
+banjarmasin
+bannu
+banqiao
+bao'an
+baoding
+baoji
+baoshan
+baotou
+barcelona
+barddhaman
+bareilly
+bari
+barinas
+barnaul
+barquisimeto
+barranquilla
+barueri
+basrah
+basuo
+batam
+batikent
+batman
+battagram
+bauchi
+bauru
+bawshar
+bayan nur
+bazhong
+bei'an
+beihai
+beijing
+beira
+beirut
+bekasi
+belagavi
+belem
+belfast
+belford roxo
+belgorod
+belgrade
+bello
+belo horizonte
+ben cat
+bengaluru
+bengbu
+benghazi
+bengkulu
+benguela
+benin city
+benito juarez
+benoni
+benxi
+berlin
+betim
+beylikduezue
+bhagalpur
+bharatpur
+bhatara
+bhatpara
+bhavnagar
+bhawana
+bhayandar
+bhilai
+bhilwara
+bhiwandi
+bhopal
+bhubaneswar
+bida
+bielefeld
+bien hoa
+bijie
+bikaner
+bilaspur
+bilbao
+bilimora
+bimbo
+binan
+binh thanh
+binzhou
+birkenhead
+birmingham
+bishkek
+bissau
+blantyre
+blida
+bloemfontein
+blumenau
+boa vista
+bobo-dioulasso
+bochum
+bogor
+bogota
+bokaro
+boksburg
+bologna
+bonn
+borama
+borivli
+botshabelo
+bouake
+bozhou
+bradford
+brahmapur
+brakpan
+brampton
+brasilia
+bratislava
+brazzaville
+bremen
+brent
+brest
+brisbane
+bristol
+brno
+brussels
+bryansk
+bucaramanga
+bucharest
+bucheon-si
+buda
+budapest
+budta
+buenaventura
+buenos aires
+bujumbura
+bukavu
+bukit rahman putra
+bulawayo
+bunamwaya
+bunia
+buon ma thuot
+buraydah
+burewala
+bursa
+busan
+butuan
+bydgoszcz
+cabanatuan city
+cabimas
+cabinda
+cabuyao
+cagayan de oro
+cairo
+calabar
+calamba
+calgary
+cali
+callao
+caloocan
+calumbo
+camacari
+camagueey
+camama
+camayenne
+campina grande
+campinas
+campo grande
+campos dos goytacazes
+can tho
+canberra
+cancun
+cangzhou
+cankaya
+canoas
+cape town
+caracas
+carapicuiba
+cardiff
+cariacica
+carrefour
+cartagena
+caruaru
+casablanca
+cascavel
+catania
+caucaia
+caxias do sul
+cazenga
+cebu city
+celaya
+central coast
+chak jhumra
+chanda
+chandigarh
+changchun
+changde
+changning
+changsha
+changshu
+changwon
+changyi
+changzhi
+changzhou
+chaoyang
+chaozhou
+chattogram
+cheboksary
+chelyabinsk
+chengde
+chengdu
+chengguan qu
+chennai
+chenzhou
+cheonan
+cheongju-si
+cherepovets
+chiba
+chiclayo
+chifeng
+chihuahua
+chimbote
+chimoio
+chiniot
+chinju
+chipata
+chisinau
+chita
+chitungwiza
+chizhou
+cho lon
+chongjin
+chongming
+chongqing
+chongzuo
+christchurch
+chunian
+chuxiong
+chuzhou
+cibinong
+cilegon
+cimahi
+cirebon
+ciudad apodaca
+ciudad benito juarez
+ciudad bolivar
+ciudad del este
+ciudad general escobedo
+ciudad guayana
+ciudad juarez
+ciudad lopez mateos
+ciudad nezahualcoyotl
+ciudad obregon
+ciudad victoria
+cixi
+coatzacoalcos
+cochabamba
+coimbatore
+colombo
+comilla
+conakry
+constanta
+constantine
+contagem
+copenhagen
+cordoba
+corrientes
+cotabato
+cotonou
+coventry
+coyoacan
+cuauhtemoc
+cuautitlan izcalli
+cucuta
+cuenca
+cuernavaca
+cuiaba
+cuito
+culiacan
+cumana
+curitiba
+cusco
+cuttack
+da nang
+dachang
+daegu
+daejeon
+dakar
+dalian
+daloa
+damanhur
+damascus
+damietta
+dammam
+dandong
+daqing
+dar es salaam
+darnytsya
+dasmarinas
+datong
+davangere
+davao
+daxing'anling
+daye
+dayrah
+dazhou
+dehradun
+delhi
+delmas
+denizli
+denpasar
+depok
+dera ghazi khan
+dera ismail khan
+desna
+deyang
+dezhou
+dhaka
+dhanbad
+dharavi
+dhule
+di an
+diadema
+diepsloot
+dihok
+dingxi
+dire dawa
+diyarbakir
+djibouti
+dnipro
+dniprovskyi
+dodoma
+doha
+dombivali
+donetsk
+dongguan
+dongying
+dortmund
+douala
+dresden
+dubai
+dublin
+duesseldorf
+duisburg
+dumai
+duque de caxias
+durban
+durgapur
+dushanbe
+e'zhou
+east jerusalem
+east london
+ebute ikorodu
+ecatepec de morelos
+edinburgh
+edmonton
+edogawe
+el obeid
+elazig
+eldoret
+eloy alfaro
+emalahleni
+ensenada
+enugu
+erbil
+erode
+erzurum
+esenler
+esenyurt
+eskisehir
+eslamshahr
+esna
+espoo
+essen
+etobicoke
+evaton
+faisalabad
+faridabad
+fatih
+feira de santana
+fenghuang
+fengshan
+fengxiang
+fes
+firozabad
+florence
+florianopolis
+fortaleza
+foshan
+franca
+frankfurt am main
+freetown
+fujisawa
+fukuoka
+fukuyama
+fushun
+fuxin
+fuyang
+fuzhou
+ganja
+ganzhou
+gaomi
+gatineau
+gaya
+gaza
+gaziantep
+gazipur
+gboko
+gdansk
+geita
+general santos
+genoa
+ghaziabad
+gia lam
+gifu
+giza
+gjong gja
+glasgow
+goiania
+gold coast
+golfe
+goma
+gombe
+gonder
+gorakhpur
+gothenburg
+goyang-si
+gqeberha
+grajau
+graz
+guadalajara
+guadalupe
+guang'an
+guangyuan
+guangzhou
+guankou
+guarulhos
+guatemala city
+guayaquil
+guediawaye
+guigang
+guilin
+guiyang
+gujangbagh
+gujranwala
+gujrat
+guli
+gumi
+gundupalaiyam
+guntur
+gurugram
+gustavo adolfo madero
+guwahati
+guyuan
+gwalior
+gwangju
+gwangmyeong
+ha'il
+hachioji
+hada'iq al qubbah
+hafizabad
+hai ba trung
+haikou
+haiphong
+halifax
+hamadan
+hamah
+hamamatsu
+hamburg
+hamburg-mitte
+hamburg-nord
+hamhung
+hamilton
+handan
+hangzhou
+hannover
+hanoi
+hanzhong
+harare
+harbin
+hargeysa
+hathazari
+havana
+hebi
+hechi
+hechuan
+hefei
+hegang
+helsinki
+hengshui
+hengyang
+herat
+hermosillo
+heroica matamoros
+heshan
+heyuan
+heze
+hezhou
+higashiosaka
+himeji
+hirakata
+hiroshima
+hisar
+hlaingthaya
+ho chi minh city
+hohhot
+hoji ya henda
+holguin
+homs
+homyel'
+honcho
+hong kong
+hong kong island
+hongkou
+howrah
+hrodna
+hsinchu
+huai'an
+huaibei
+huaihua
+huainan
+huambo
+huancayo
+huanggang
+huangpu
+huangshan
+huangshi
+hubballi
+hue
+huizhou
+huludao
+hulunbuir
+hungnam
+huocheng
+huzhou
+hwaseong-si
+hyderabad
+iasi
+ibadan
+ibague
+ibb
+ichikawa
+ichinomiya
+ijebu ode
+ikare
+ikeja
+iksan
+ile-ife
+ilesa
+iligan
+iligan city
+iloilo
+ilorin
+imus
+incheon
+indore
+ipoh
+iquitos
+irapuato
+irbid
+irkutsk
+iseyin
+isfahan
+iskandar puteri
+islamabad
+islington
+ismailia
+istanbul
+itabashi
+itaquaquecetuba
+ivanovo
+iwaki
+ixtapaluca
+izhevsk
+izmir
+iztacalco
+iztapalapa
+jabalpur
+jaboatao dos guararapes
+jaipur
+jajmau
+jakarta
+jalalpur pirwala
+jalandhar
+jalgaon
+jambi city
+jammu
+jamnagar
+jamshedpur
+jardim angela
+jayapura
+jeddah
+jeju city
+jeonju
+jepara
+jerusalem
+jhang sadr
+jhansi
+ji'an
+jiading
+jiamusi
+jiangmen
+jiangyin
+jianshui
+jiaojiang
+jiaozhou
+jiaozuo
+jiaxing
+jieyang
+jijiga
+jilin
+jinan
+jincheng
+jing'an
+jingdezhen
+jingmen
+jingzhou
+jinhua
+jining
+jinjiang
+jinshan
+jinzhong
+jinzhou
+jiujiang
+jiuquan
+jixi
+jizhou
+joao pessoa
+jodhpur
+johannesburg
+johor bahru
+joinville
+jos
+juazeiro do norte
+juba
+juiz de fora
+junagadh
+jundiai
+kabul
+kadapa
+kaduna
+kaech'on
+kaesong
+kafrul
+kagoshima
+kahama
+kahramanmaras
+kaifeng
+kakamega
+kakinada
+kalaburagi
+kalemyo
+kaliningrad
+kalininskiy
+kallakurichi
+kaluga
+kalyan
+kamarhati
+kampala
+kampung baru subang
+kampung kangkar teberau
+kampung larkin lama
+kananga
+kanayannur
+kanazawa
+kandahar
+kano
+kanpur
+kaohsiung
+karabaglar
+karachi
+karagandy
+karaj
+karawang
+karbala
+karnal
+karol bagh
+karsiyaka
+kashan
+kashgar
+kashiwa
+kassala
+kasugai
+kasur
+kathmandu
+katsina
+katsushika
+kawagoe
+kawaguchi
+kawasaki
+kayseri
+kazan
+kediri
+keelung
+kemerovo
+kendari
+kenitra
+kennedy
+kerman
+kermanshah
+khabarovsk
+khamis mushait
+kharkiv
+khartoum
+khartoum north
+khorramabad
+khorramshahr
+khulna
+kigali
+kikolo
+kikuyu
+kikwit
+kima kieza
+kimhae
+kingston
+kingston upon hull
+kinshasa
+kira
+kirkuk
+kirov
+kisangani
+kisumu
+kita
+kitakyushu
+kitwe
+kluang
+kobe
+kochi
+koeln
+kolhapur
+kolkata
+kollam
+kolwezi
+kom ombo
+konak
+konya
+korba
+korhogo
+koriyama
+korla
+koshigaya
+kosti
+kota
+kota bharu
+kota damansara
+kota kinabalu
+kota kuala muda
+koto
+koumassi
+kowloon
+kowloon city
+kozhikode
+krakow
+krasnodar
+krasnogvargeisky
+krasnoyarsk
+krugersdorp
+kryvyy rih
+kuala lumpur
+kuala terengganu
+kuantan
+kuching
+kuecuekcekmece
+kukatpally
+kulti
+kumamoto
+kumasi
+kunming
+kunshan
+kupang
+kurashiki
+kurgan
+kurnool
+kursk
+kurume
+kwai chung
+kyiv
+kyoto
+kyzylorda
+la paz
+lagos
+lahore
+laibin
+laiwu
+laixi
+langfang
+lanzhou
+lapu-lapu city
+larkana
+las palmas de gran canaria
+las pinas
+latakia
+latur
+laval
+leeds
+leicester
+leipzig
+lekki
+leon de los aldama
+leshan
+lhoka
+lianshan
+lianyungang
+liaocheng
+liaoyang
+libreville
+likasi
+lilongwe
+lima
+lincang
+linfen
+linyi
+lipetsk
+lisbon
+lishui
+liupanshui
+liuzhou
+liverpool
+lobito
+lodz
+logan city
+lome
+london
+londrina
+long bien
+longshan
+longyan
+loni
+loudi
+lu'an
+luancheng
+luanda
+lubango
+lublin
+lubumbashi
+lucknow
+ludhiana
+lueliang
+luhansk
+luohe
+luohu district
+luoyang
+lusaka
+luxor
+luzhou
+lviv
+lyon
+ma'anshan
+macapa
+macau
+maceio
+machida
+madinah
+madinat an nasr
+madrid
+madurai
+maebashi
+magnitogorsk
+maheshtala
+mahilyow
+maianga
+maiduguri
+maipu
+makassar
+makati city
+makhachkala
+makiyivka
+makkah
+makurdi
+malabon
+malacca
+malaga
+malang
+malanje
+malatya
+malegaon
+malingao
+malir cantonment
+malmoe
+maltepe
+man'gyongdae-ri
+manado
+managua
+manaus
+manchester
+mandalay
+mandaluyong
+mandaluyong city
+mandaue city
+mangaluru
+manila
+manizales
+mannheim
+mansilingan
+manukau city
+maoming
+maputo
+mar del plata
+maracaibo
+maracay
+maradi
+mardan
+marikina city
+maringa
+markham
+marne la vallee
+maroua
+marrakesh
+marseille
+masan
+maseru
+mashhad
+masina
+matadi
+mataram
+mathura
+matola
+matsudo
+matsuyama
+maturin
+maua
+mawlamyine
+mazar-e sharif
+mazatlan
+mbandaka
+mbeya
+mbuji-mayi
+medan
+medellin
+meerut
+meishan
+meizhou
+mek'ele
+meknes
+melbourne
+mengzi
+merida
+mersin
+mexicali
+mexico city
+mianyang
+mianzhu, deyang, sichuan
+miguel hidalgo
+milan
+minato
+mingora
+minhang
+minna
+minsk
+miri
+mirpur model thana
+misratah
+mississauga
+mixco
+miyazaki
+mogadishu
+mogi das cruzes
+mohammadpur
+mombasa
+monrovia
+monteria
+monterrey
+montes claros
+montevideo
+montreal
+moradabad
+morelia
+morogoro
+moscow
+mosul
+muar
+mudanjiang
+muenster
+mukalla
+mukim pulai
+mulenvos
+multan
+mumbai
+munich
+muntinlupa
+muratpasa
+murcia
+muscat
+muzaffarabad
+muzaffarnagar
+muzaffarpur
+mwanza
+mykolayiv
+mysuru
+n'djamena
+naberezhnyye chelny
+nagano
+nagasaki
+nagoya
+nagpur
+naha
+nairobi
+najaf
+najafgarh
+najran
+nakano
+nakuru
+nam gjinh
+namangan
+namp'o
+nampula
+nanchang
+nanchong
+nanded
+nanjing
+nanning
+nanping
+nanqiao
+nansana
+nantes
+nantong
+nanyang
+naples
+nara-shi
+narela
+nashik
+nasiriyah
+natal
+natore
+naucalpan de juarez
+navi mumbai
+nawabshah
+nay pyi taw
+nazret
+ndola
+neijiang
+neiva
+nellore
+new cairo
+new delhi
+new kingston
+new taipei city
+new territories
+newcastle
+newcastle upon tyne
+nghi son
+nha trang
+niamey
+nice
+niigata
+niluefer
+ningbo
+ningde
+nishinomiya
+niteroi
+nizamabad
+nizhniy novgorod
+nizhny tagil
+nottingham
+nouakchott
+nova iguacu
+nova vida
+novokuznetsk
+novosibirsk
+nowrangapur
+nuevo laredo
+nukus
+nuremberg
+nyala
+obalende
+odesa
+ogbomoso
+oita
+ojo de agua
+okara
+okayama
+okazaki
+okene
+olinda
+omdurman
+omsk
+ondo
+onitsha
+oral
+oran
+ordos
+orel
+orenburg
+orumiyeh
+osaka
+osasco
+osh
+oslo
+osogbo
+ota
+otsu
+ottawa
+ouagadougou
+oujda
+owerri
+oyo
+padang
+palangkaraya
+palembang
+palermo
+pallabi
+palma
+palmas
+palmira
+palu
+panama city
+panihati
+panjin
+panshan
+panzhihua
+paranaque city
+parauapebas
+parbhani
+paris
+pasay
+pasig city
+pasir gudang
+pasto
+patiala
+patna
+paulista
+pavlodar
+pekalongan
+pekanbaru
+pelentong
+pelotas
+pengze
+penza
+percut
+pereira
+perm
+perth
+peshawar
+pest
+petaling jaya
+petare
+petionville
+petrolina
+phnom penh
+pietermaritzburg
+pikine
+pimpri
+pimpri-chinchwad
+pindi bhattian
+pingdingshan
+pingdu
+pingliang
+pingxiang
+piracicaba
+piura
+pizhou
+plovdiv
+pohang
+pointe-noire
+pokhara
+pontianak
+popayan
+port harcourt
+port said
+port sudan
+port-au-prince
+port-de-paix
+porto alegre
+porto velho
+portoviejo
+posadas
+poznan
+prague
+praia grande
+pravyi bereh
+prayagraj
+preston
+pretoria
+pristina
+pucallpa
+puchong
+pudong
+puducherry
+puebla
+puente alto
+puerto la cruz
+punasa
+pune
+puning
+putian
+putuo
+puxi
+puyang
+pyeongtaek
+pyongyang
+qazvin
+qingdao
+qingpu
+qingyang
+qingyuan
+qinhuangdao
+qinzhou
+qionghai
+qiqihar
+qitaihe
+qods
+qom
+quan muoi
+quan muoi mot
+quanzhou
+quebec
+quelimane
+quetta
+quezon city
+qui nhon
+quito
+qujing
+quzhou
+ra's bayrut
+rabat
+rach gia
+rahim yar khan
+raipur
+rajamahendravaram
+rajkot
+rajpur sonarpur
+rajshahi
+ramgundam
+ramiros
+ranchi
+randburg
+rangpur
+ras al khaimah
+rasapudipalem
+rasht
+rawalpindi
+reading
+recife
+reynosa
+ribeirao das neves
+ribeirao preto
+riga
+rio branco
+rio de janeiro
+riyadh
+rizhao
+rohini
+rohtak
+rome
+roodepoort
+rosario
+rosetta
+rostov-on-don
+rotterdam
+rui'an
+ruiru
+rustenburg
+ryazan'
+sadr city
+safi
+sagamihara
+saharanpur
+sahiwal
+saint petersburg
+saitama
+sakai
+sale
+salem
+salta
+saltillo
+saltivka
+salvador
+samara
+samarinda
+samarkand
+samba
+samsun
+samut prakan
+san jose
+san jose del monte
+san juan
+san luis potosi
+san miguel de tucuman
+san miguelito
+san nicolas de los garza
+san pablo
+san pedro
+san pedro sula
+san salvador
+san-pedro
+sanaa
+sanandaj
+sancaktepe
+sandakan
+sangli
+sanhe
+sanliurfa
+sanmenxia
+sanming
+santa catarina
+santa cruz de la sierra
+santa fe
+santa marta
+santarem
+santiago
+santiago de cuba
+santiago de los caballeros
+santiago de queretaro
+santo andre
+santo domingo
+santo domingo de los colorados
+santo domingo este
+santo domingo oeste
+santos
+sanya
+sao bernardo do campo
+sao joao de meriti
+sao jose do rio preto
+sao jose dos campos
+sao jose dos pinhais
+sao luis
+sao paulo
+sao vicente
+sapele
+sapporo
+sarajevo
+saransk
+saratov
+sargodha
+sariwon-si
+saurimo
+sector 3
+sector 6
+seeb
+sejong
+selayang baru utara
+semarang
+sendai
+seongnam-si
+seoul
+serang
+serekunda
+seremban
+serra
+setagaya
+setapak
+sevastopol
+sevilla
+sha tin
+shah alam
+shahjanpur
+shahriar
+sham shui po
+shanghai
+shangluo
+shangqiu
+shangrao
+shangyu
+shantou
+shanwei
+shaoguan
+shaoxing
+shaoyang
+sharjah
+sheffield
+shekhupura
+shenyang
+shenzhen
+shibganj
+shihezi
+shijiazhuang
+shinagawa
+shinjuku
+shiqi
+shiraz
+shivaji nagar
+shivamogga
+shiyan
+shizuishan
+shizuoka
+sholapur
+shouguang
+shuangyashan
+shubra al khaymah
+shuozhou
+shyamnagar
+shymkent
+sialkot
+sikasso
+siliguri
+simferopol
+singapore
+sinjhoro
+siping
+sisli
+situbondo
+skopje
+smolensk
+soacha
+sochi
+sofia
+sokoto
+soledad
+soledad de graciano sanchez
+solwezi
+songjiang
+sorocaba
+soshanguve
+south dublin
+south tangerang
+soweto
+soyapango
+srinagar
+stavropol
+stockholm
+stuttgart
+subang jaya
+suez
+suginami
+suining
+suita
+suizhou
+sukabumi
+sukkur
+sulaymaniyah
+sultanah
+sultanbeyli
+sultangazi
+sumbawanga
+sumgayit
+sunch'on
+sungai petani
+sunshine coast
+suqian
+surabaya
+surakarta
+surat
+surgut
+surrey
+suwon
+suzano
+suzhou
+swansea
+sydney
+szczecin
+ta'if
+tabora
+tabriz
+tabuk
+taguig
+tai'an
+taicang
+taichung
+tainan
+taipei
+taiyuan
+taiz
+taizhou
+takamatsu
+takasaki
+takatsuki
+takeo
+takoradi
+talatona
+tallinn
+tamale
+taman petaling
+tampico
+tando allahyar
+tando bago
+tanga
+tangerang
+tanggu
+tangier
+tangshan
+tanta
+tantou
+tanzhou
+taoyuan
+tapachula
+taraz
+tarlac city
+tarsus
+tartus
+tashkent
+tasikmalaya
+taubate
+tawau
+tbilisi
+tegucigalpa
+tehran
+tel aviv
+temara
+teni
+tepic
+teresina
+tete
+tetouan
+thai nguyen
+thane
+thanh hoa
+the hague
+thembisa
+thessaloniki
+thies
+thiruvananthapuram
+thoothukudi
+thrissur
+thu dau mot
+thu gjuc
+thuan an
+tianjin
+tianshui
+tieling
+tijuana
+tirana
+tiruchirappalli
+tirunelveli
+tiruppur
+tlahuac
+tlalnepantla
+tlalpan
+tlaquepaque
+toamasina
+tokorozawa
+tokyo
+toluca
+tolyatti
+tomsk
+tonala
+tongchuan
+tonghua
+tongling
+tongshan
+toronto
+torreon
+toshima
+touba
+toulouse
+toyama
+toyohashi
+toyonaka
+toyota
+tripoli
+trujillo
+tseung kwan o
+tshikapa
+tsuen wan
+tuen mun
+tula
+tumkur
+tungi
+tunis
+turin
+turmero
+tuxtla
+tver
+tyumen
+uberaba
+uberlandia
+udaipur
+ueruemqi
+ueskuedar
+ufa
+uige
+uijeongbu-si
+ujjain
+ulan bator
+ulan-ude
+ulanqab
+ulhasnagar
+ulsan
+ulyanovsk
+umraniye
+umuahia
+usak
+ust-kamenogorsk
+utrecht
+utsunomiya
+uvira
+uyo
+vadodara
+valencia
+valenzuela
+valladolid
+valledupar
+van
+vancouver
+varanasi
+varna
+varzea grande
+vaughan
+vellore
+venustiano carranza
+veracruz
+vereeniging
+viana
+victoria
+victoria de durango
+vienna
+vientiane
+viet tri
+vijayapura
+vijayawada
+vila velha
+villa nueva
+villahermosa
+villavicencio
+vilnius
+vina del mar
+vinh
+vinnytsya
+virar
+visakhapatnam
+vitebsk
+vitoria
+vitoria da conquista
+vladikavkaz
+vladimir
+vladivostok
+volgograd
+vologda
+volzhsky
+voronezh
+vung tau
+wad medani
+wafangdian
+wah cantt
+wakayama
+wandsbek
+wanning
+wanxian
+wanzhou
+warangal
+warder
+warri
+warsaw
+weifang
+weihai
+weinan
+welkom
+wellington
+wenchang
+wenshan city
+wenzhou
+west jerusalem
+windhoek
+winejok
+winnipeg
+wong tai sin
+wonju
+wonsan
+wroclaw
+wuhan
+wuhu
+wuppertal
+wuwei
+wuxi
+wuzhong
+wuzhou
+xalapa de enriquez
+xi'an
+xiamen
+xiangtan
+xiangyang
+xianning
+xianyang
+xiaogan
+xichang
+xico
+xilinhot
+xingtai
+xingyi
+xining
+xinxiang
+xinyang
+xinyi
+xinyu
+xinzhou
+xochimilco
+xuancheng
+xuanhua
+xuchang
+xuhui
+xuzhou
+ya'an
+yan'an
+yancheng
+yangjiang
+yangon
+yangpu
+yangquan
+yangsan
+yangshuo
+yangzhou
+yanji
+yantai
+yaounde
+yaroslavl
+yazd
+yekaterinburg
+yenagoa
+yerevan
+yibin
+yichang
+yichun
+yinchuan
+yingkou
+yiwu
+yixing
+yogyakarta
+yokkaichi
+yokohama
+yokosuka
+yola
+yongji
+yongzhou
+yueyang
+yulin
+yuncheng
+yunfu
+yunlong
+yunusobod
+zagazig
+zagreb
+zahedan
+zamboanga
+zanjan
+zanzibar
+zaozhuang
+zapopan
+zaporizhzhya
+zaragoza
+zaria
+zarqa
+zhabei
+zhangjiagang
+zhangjiajie
+zhangjiakou
+zhangye
+zhangzhou
+zhanjiang
+zhaoqing
+zhaotong
+zhengzhou
+zhenjiang
+zhongshan
+zhongwei
+zhoukou
+zhoushan
+zhu cheng city
+zhucheng
+zhuhai
+zhumadian
+zhuzhou
+zibo
+zigong
+zinder
+ziyang
+zuerich
+zunyi

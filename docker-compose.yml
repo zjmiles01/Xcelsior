@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: xcelsior
+      POSTGRES_PASSWORD: xcelsior
+      POSTGRES_DB: xcelsior
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U xcelsior"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # Production-parity API container. Daily development runs the backend
+  # natively (`uv run uvicorn ...`); use `docker compose --profile app up`
+  # to exercise the built image locally.
+  api:
+    profiles: ["app"]
+    build: ./backend
+    environment:
+      XCELSIOR_DATABASE_URL: postgresql+psycopg://xcelsior:xcelsior@db:5432/xcelsior
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:

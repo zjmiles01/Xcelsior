@@ -1,0 +1,114 @@
+name,ats_type,ats_token,domain
+Stripe,greenhouse,stripe,stripe.com
+Airbnb,greenhouse,airbnb,airbnb.com
+Coinbase,greenhouse,coinbase,coinbase.com
+Databricks,greenhouse,databricks,databricks.com
+GitLab,greenhouse,gitlab,gitlab.com
+Figma,greenhouse,figma,figma.com
+Robinhood,greenhouse,robinhood,robinhood.com
+Reddit,greenhouse,reddit,redditinc.com
+Lyft,greenhouse,lyft,lyft.com
+Duolingo,greenhouse,duolingo,duolingo.com
+Asana,greenhouse,asana,asana.com
+Amplitude,greenhouse,amplitude,amplitude.com
+Benchling,greenhouse,benchling,benchling.com
+Brex,greenhouse,brex,brex.com
+Carta,greenhouse,carta,carta.com
+Checkr,greenhouse,checkr,checkr.com
+Cloudflare,greenhouse,cloudflare,cloudflare.com
+Discord,greenhouse,discord,discord.com
+Elastic,greenhouse,elastic,elastic.co
+Flexport,greenhouse,flexport,flexport.com
+Gusto,greenhouse,gusto,gusto.com
+HashiCorp,greenhouse,hashicorp,hashicorp.com
+Intercom,greenhouse,intercom,intercom.com
+Klaviyo,greenhouse,klaviyo,klaviyo.com
+Lattice,greenhouse,lattice,lattice.com
+Mixpanel,greenhouse,mixpanel,mixpanel.com
+MongoDB,greenhouse,mongodb,mongodb.com
+New Relic,greenhouse,newrelic,newrelic.com
+Okta,greenhouse,okta,okta.com
+PagerDuty,greenhouse,pagerduty,pagerduty.com
+Plaid,greenhouse,plaid,plaid.com
+Quora,greenhouse,quora,quora.com
+Ramp,greenhouse,ramp,ramp.com
+Retool,greenhouse,retool,retool.com
+Samsara,greenhouse,samsara,samsara.com
+Scale AI,greenhouse,scaleai,scale.com
+Sentry,greenhouse,sentry,sentry.io
+Squarespace,greenhouse,squarespace,squarespace.com
+Strava,greenhouse,strava,strava.com
+Twilio,greenhouse,twilio,twilio.com
+Udemy,greenhouse,udemy,udemy.com
+Vercel,greenhouse,vercel,vercel.com
+Verkada,greenhouse,verkada,verkada.com
+Webflow,greenhouse,webflow,webflow.com
+Wealthfront,greenhouse,wealthfront,wealthfront.com
+Affirm,greenhouse,affirm,affirm.com
+Airtable,greenhouse,airtable,airtable.com
+Anthropic,greenhouse,anthropic,anthropic.com
+Attentive,greenhouse,attentivemobile,attentive.com
+Axon,greenhouse,axon,axon.com
+BetterUp,greenhouse,betterup,betterup.com
+BitGo,greenhouse,bitgo,bitgo.com
+Block,greenhouse,block,block.xyz
+Braze,greenhouse,braze,braze.com
+Calendly,greenhouse,calendly,calendly.com
+Chime,greenhouse,chime,chime.com
+CircleCI,greenhouse,circleci,circleci.com
+ClickUp,greenhouse,clickup,clickup.com
+Coursera,greenhouse,coursera,coursera.org
+Datadog,greenhouse,datadog,datadoghq.com
+Dbt Labs,greenhouse,dbtlabsinc,getdbt.com
+DoorDash,greenhouse,doordashusa,doordash.com
+Dropbox,greenhouse,dropbox,dropbox.com
+Etsy,greenhouse,etsy,etsy.com
+Faire,greenhouse,faire,faire.com
+Fastly,greenhouse,fastly,fastly.com
+Gemini,greenhouse,gemini,gemini.com
+Grammarly,greenhouse,grammarly,grammarly.com
+Handshake,greenhouse,joinhandshake,joinhandshake.com
+Headway,greenhouse,headway,headway.co
+Hinge,greenhouse,hinge,hinge.co
+Instabase,greenhouse,instabase,instabase.com
+Instacart,greenhouse,instacart,instacart.com
+Komodo Health,greenhouse,komodohealth,komodohealth.com
+Kraken,greenhouse,kraken123,kraken.com
+LaunchDarkly,greenhouse,launchdarkly,launchdarkly.com
+Life360,greenhouse,life360,life360.com
+Linear,greenhouse,linear,linear.app
+Loom,greenhouse,loom,loom.com
+Lucid,greenhouse,lucidsoftware,lucid.co
+MasterClass,greenhouse,masterclass,masterclass.com
+Modern Health,greenhouse,modernhealth,modernhealth.com
+Motive,greenhouse,gomotive,gomotive.com
+Nextdoor,greenhouse,nextdoor,nextdoor.com
+Nuro,greenhouse,nuro,nuro.ai
+Opendoor,greenhouse,opendoor,opendoor.com
+Oscar Health,greenhouse,oscar,hioscar.com
+Outreach,greenhouse,outreach,outreach.io
+Pinterest,greenhouse,pinterest,pinterest.com
+Postman,greenhouse,postman,postman.com
+Rippling,greenhouse,rippling,rippling.com
+Roblox,greenhouse,roblox,roblox.com
+Skims,greenhouse,skims,skims.com
+Snyk,greenhouse,snyk,snyk.io
+SoFi,greenhouse,sofi,sofi.com
+Sonos,greenhouse,sonos,sonos.com
+SpaceX,greenhouse,spacex,spacex.com
+Upstart,greenhouse,upstart,upstart.com
+Whatnot,greenhouse,whatnot,whatnot.com
+Zillow,greenhouse,zillowgroup,zillow.com
+Zip,greenhouse,zip,ziphq.com
+Palantir Technologies,lever,palantir,palantir.com
+Kraken,lever,kraken123,kraken.com
+Shield AI,lever,shieldai,shield.ai
+Zoox,lever,zoox,zoox.com
+Match Group,lever,matchgroup,matchgroup.com
+Nium,lever,nium,nium.com
+Entrata,lever,entrata,entrata.com
+Octopus Energy,lever,octoenergy,octopusenergy.com
+Loft Orbital,lever,loftorbital,loftorbital.com
+AllTrails,lever,alltrails,alltrails.com
+Olo,lever,olo,olo.com
+Dexterity,lever,dexterity,dexterity.ai

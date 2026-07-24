@@ -1,0 +1,78 @@
+# Canonical title families. A canonical title is a *family* — seniority is
+# deliberately not part of it (experience level is a separate field), so
+# "Senior Backend Engineer" and "Backend Engineer II" land in one family.
+# Aliases are matched after normalization strips seniority/level tokens.
+
+titles:
+  - name: Software Engineer
+    slug: software-engineer
+    aliases: [software developer, swe, software development engineer, sde, programmer, application engineer, applications engineer, java developer, python developer, ruby developer, php developer, golang developer, .net developer, c# developer]
+  - name: Backend Engineer
+    slug: backend-engineer
+    aliases: [backend developer, back end engineer, back-end engineer, backend software engineer, software engineer backend, server engineer, api engineer, services engineer]
+  - name: Frontend Engineer
+    slug: frontend-engineer
+    aliases: [frontend developer, front end engineer, front-end engineer, front end developer, ui engineer, web developer, web engineer, software engineer frontend]
+  - name: Full-Stack Engineer
+    slug: full-stack-engineer
+    aliases: [full stack engineer, fullstack engineer, full stack developer, full-stack developer, fullstack developer, software engineer full stack]
+  - name: Mobile Engineer
+    slug: mobile-engineer
+    aliases: [mobile developer, mobile software engineer, mobile application engineer]
+  - name: iOS Engineer
+    slug: ios-engineer
+    aliases: [ios developer, ios software engineer]
+  - name: Android Engineer
+    slug: android-engineer
+    aliases: [android developer, android software engineer]
+  - name: DevOps Engineer
+    slug: devops-engineer
+    aliases: [devops, dev ops engineer, devsecops engineer, release engineer, build engineer, ci/cd engineer]
+  - name: Site Reliability Engineer
+    slug: site-reliability-engineer
+    aliases: [sre, reliability engineer, production engineer]
+  - name: Platform Engineer
+    slug: platform-engineer
+    aliases: [platform developer, developer experience engineer, devx engineer, internal tools engineer]
+  - name: Infrastructure Engineer
+    slug: infrastructure-engineer
+    aliases: [infra engineer, systems infrastructure engineer, core infrastructure engineer, infrastructure software engineer]
+  - name: Cloud Engineer
+    slug: cloud-engineer
+    aliases: [cloud architect, cloud infrastructure engineer, cloud platform engineer]
+  - name: Data Engineer
+    slug: data-engineer
+    aliases: [big data engineer, data platform engineer, etl developer, data infrastructure engineer]
+  - name: Analytics Engineer
+    slug: analytics-engineer
+    aliases: [business intelligence engineer, bi engineer, bi developer]
+  - name: Data Scientist
+    slug: data-scientist
+    aliases: [applied scientist, research scientist, decision scientist, quantitative researcher]
+  - name: Machine Learning Engineer
+    slug: machine-learning-engineer
+    aliases: [ml engineer, mle, machine learning scientist, deep learning engineer, applied ml engineer, ml infrastructure engineer]
+  - name: AI Engineer
+    slug: ai-engineer
+    aliases: [artificial intelligence engineer, generative ai engineer, llm engineer, prompt engineer]
+  - name: Security Engineer
+    slug: security-engineer
+    aliases: [application security engineer, appsec engineer, infosec engineer, information security engineer, cybersecurity engineer, product security engineer, cloud security engineer, offensive security engineer, penetration tester, detection engineer]
+  - name: QA Engineer
+    slug: qa-engineer
+    aliases: [quality assurance engineer, quality engineer, test engineer, sdet, software development engineer in test, software engineer in test, automation engineer, test automation engineer]
+  - name: Embedded Engineer
+    slug: embedded-engineer
+    aliases: [embedded software engineer, firmware engineer, embedded systems engineer]
+  - name: Systems Engineer
+    slug: systems-engineer
+    aliases: [systems software engineer, operating systems engineer, low level engineer, kernel engineer]
+  - name: Engineering Manager
+    slug: engineering-manager
+    aliases: [software engineering manager, em, manager software engineering, engineering lead, head of engineering, director of engineering]
+  - name: Solutions Engineer
+    slug: solutions-engineer
+    aliases: [solutions architect, sales engineer, pre-sales engineer, customer engineer, field engineer, forward deployed engineer]
+  - name: Gameplay Engineer
+    slug: game-engineer
+    aliases: [game developer, game engineer, unity developer, unreal engineer, game programmer]

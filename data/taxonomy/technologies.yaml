@@ -1,0 +1,337 @@
+# Xcelsior technology taxonomy. Curated by hand; changes reviewed like code.
+#
+# Entry shape:
+#   - name: Display Name          (also matched as an alias unless flags say otherwise)
+#     slug: explicit-slug         (optional; derived from name when omitted)
+#     category: one of languages | frameworks | cloud | infrastructure | databases |
+#               testing | messaging | data_engineering | ai_ml | security
+#     match:                      (optional; flags applied when matching the *name*)
+#       case_sensitive: true      (must match exact case, e.g. Go, R, Ray)
+#       require_context: true     (only counts near tech-context cues; for ambiguous words)
+#     aliases:                    (optional; strings are safe defaults, dicts carry flags)
+#       - simple-alias
+#       - {alias: risky one, case_sensitive: true, require_context: true}
+
+technologies:
+  # ── Languages ────────────────────────────────────────────────
+  - {name: Python, category: languages, aliases: [python3]}
+  - {name: Java, category: languages}
+  - {name: JavaScript, category: languages, aliases: [{alias: JS, case_sensitive: true, require_context: true}]}
+  - {name: TypeScript, category: languages, aliases: [{alias: TS, case_sensitive: true, require_context: true}]}
+  - name: Go
+    category: languages
+    match: {case_sensitive: true, require_context: true}
+    aliases: [golang]
+  - {name: Rust, category: languages, match: {require_context: true}}
+  - name: C
+    category: languages
+    match: {case_sensitive: true, require_context: true}
+  - {name: C++, slug: cpp, category: languages, aliases: [cpp]}
+  - {name: "C#", slug: csharp, category: languages, aliases: [csharp]}
+  - {name: Ruby, category: languages, match: {require_context: true}}
+  - {name: PHP, category: languages}
+  - name: Swift
+    category: languages
+    match: {case_sensitive: true, require_context: true}
+  - {name: Kotlin, category: languages}
+  - {name: Scala, category: languages}
+  - name: R
+    category: languages
+    match: {case_sensitive: true, require_context: true}
+  - {name: Perl, category: languages}
+  - {name: Haskell, category: languages}
+  - {name: Elixir, category: languages}
+  - {name: Erlang, category: languages}
+  - {name: Clojure, category: languages}
+  - {name: Dart, category: languages, match: {require_context: true}}
+  - {name: Objective-C, slug: objective-c, category: languages, aliases: [objc]}
+  - {name: Lua, category: languages}
+  - {name: Julia, category: languages, match: {require_context: true}}
+  - {name: MATLAB, category: languages}
+  - {name: Groovy, category: languages}
+  - {name: "F#", slug: fsharp, category: languages, aliases: [fsharp]}
+  - {name: OCaml, category: languages}
+  - {name: Zig, category: languages, match: {require_context: true}}
+  - {name: Solidity, category: languages}
+  - {name: Bash, category: languages, aliases: [shell scripting]}
+  - {name: PowerShell, category: languages}
+  - {name: SQL, category: languages}
+  - {name: HTML, category: languages}
+  - {name: CSS, category: languages, aliases: [scss, sass]}
+  - {name: Fortran, category: languages}
+  - {name: COBOL, category: languages}
+  - {name: Assembly, category: languages, match: {require_context: true}}
+
+  # ── Frameworks & runtimes ────────────────────────────────────
+  - {name: React, category: frameworks, aliases: [react.js, reactjs]}
+  - {name: Angular, category: frameworks, aliases: [angularjs]}
+  - {name: Vue, category: frameworks, aliases: [vue.js, vuejs]}
+  - {name: Svelte, category: frameworks, aliases: [sveltekit]}
+  - {name: Next.js, slug: nextjs, category: frameworks, aliases: [nextjs]}
+  - {name: Nuxt, category: frameworks, aliases: [nuxt.js]}
+  - {name: Remix, category: frameworks, match: {require_context: true}}
+  - {name: Astro, category: frameworks, match: {require_context: true}}
+  - {name: Gatsby, category: frameworks}
+  - {name: Django, category: frameworks}
+  - {name: Flask, category: frameworks}
+  - {name: FastAPI, category: frameworks}
+  - {name: Ruby on Rails, slug: rails, category: frameworks, aliases: [{alias: Rails, case_sensitive: true}]}
+  - {name: Laravel, category: frameworks}
+  - {name: Symfony, category: frameworks}
+  - name: Spring
+    category: frameworks
+    match: {case_sensitive: true, require_context: true}
+    aliases: [spring boot, spring framework]
+  - {name: Express, category: frameworks, match: {require_context: true}, aliases: [express.js, expressjs]}
+  - {name: NestJS, category: frameworks, aliases: [nest.js]}
+  - {name: Node.js, slug: nodejs, category: frameworks, aliases: [nodejs, {alias: node, require_context: true}]}
+  - {name: .NET, slug: dotnet, category: frameworks, aliases: [dotnet, asp.net, .net core]}
+  - {name: Phoenix, category: frameworks, match: {require_context: true}}
+  - {name: Gin, category: frameworks, match: {require_context: true}}
+  - {name: Actix, category: frameworks}
+  - {name: Axum, category: frameworks}
+  - {name: Micronaut, category: frameworks}
+  - {name: Quarkus, category: frameworks}
+  - {name: Ktor, category: frameworks}
+  - {name: Hibernate, category: frameworks}
+  - {name: jQuery, category: frameworks}
+  - {name: Ember, category: frameworks, aliases: [ember.js]}
+  - {name: Tailwind CSS, slug: tailwind, category: frameworks, aliases: [tailwind, tailwindcss]}
+  - {name: Bootstrap, category: frameworks, match: {require_context: true}}
+  - {name: Redux, category: frameworks}
+  - {name: MobX, category: frameworks}
+  - {name: RxJS, category: frameworks}
+  - {name: Electron, category: frameworks, match: {require_context: true}}
+  - {name: React Native, category: frameworks}
+  - {name: Flutter, category: frameworks}
+  - {name: SwiftUI, category: frameworks}
+  - {name: Jetpack Compose, category: frameworks, aliases: [compose]}
+  - {name: Blazor, category: frameworks}
+  - {name: Streamlit, category: frameworks}
+  - {name: GraphQL, category: frameworks}
+  - {name: gRPC, category: frameworks}
+  - {name: SQLAlchemy, category: frameworks}
+  - {name: Pydantic, category: frameworks}
+  - {name: htmx, category: frameworks}
+  - {name: Vite, category: frameworks}
+  - {name: Webpack, category: frameworks}
+  - {name: TanStack Query, category: frameworks, aliases: [react query]}
+
+  # ── Cloud platforms & services ───────────────────────────────
+  - {name: AWS, category: cloud, aliases: [amazon web services]}
+  - {name: Azure, category: cloud, aliases: [microsoft azure]}
+  - {name: Google Cloud, slug: gcp, category: cloud, aliases: [gcp, google cloud platform]}
+  - {name: Oracle Cloud, category: cloud, aliases: [oci]}
+  - {name: IBM Cloud, category: cloud}
+  - {name: DigitalOcean, category: cloud, aliases: [digital ocean]}
+  - {name: Heroku, category: cloud}
+  - {name: Vercel, category: cloud}
+  - {name: Netlify, category: cloud}
+  - {name: Cloudflare, category: cloud}
+  - {name: Fly.io, slug: fly-io, category: cloud}
+  - {name: Firebase, category: cloud}
+  - {name: AWS Lambda, slug: aws-lambda, category: cloud, aliases: [{alias: lambda, require_context: true}]}
+  - {name: EC2, category: cloud}
+  - {name: S3, category: cloud}
+  - {name: ECS, category: cloud}
+  - {name: EKS, category: cloud}
+  - {name: RDS, category: cloud}
+  - {name: SageMaker, category: ai_ml, aliases: [amazon sagemaker]}
+  - {name: Vertex AI, category: ai_ml}
+
+  # ── Infrastructure, DevOps & observability ───────────────────
+  - {name: Docker, category: infrastructure, aliases: [docker compose]}
+  - {name: Kubernetes, category: infrastructure, aliases: [k8s]}
+  - {name: Terraform, category: infrastructure}
+  - {name: Ansible, category: infrastructure}
+  - {name: Puppet, category: infrastructure, match: {require_context: true}}
+  - {name: Chef, category: infrastructure, match: {case_sensitive: true, require_context: true}}
+  - {name: Helm, category: infrastructure, match: {require_context: true}}
+  - {name: Pulumi, category: infrastructure}
+  - {name: Nginx, category: infrastructure}
+  - {name: HAProxy, category: infrastructure}
+  - {name: Istio, category: infrastructure}
+  - {name: Envoy, category: infrastructure, match: {require_context: true}}
+  - {name: Consul, category: infrastructure, match: {require_context: true}}
+  - {name: Vault, category: infrastructure, match: {require_context: true}, aliases: [hashicorp vault]}
+  - {name: Nomad, category: infrastructure, match: {require_context: true}}
+  - {name: Jenkins, category: infrastructure}
+  - {name: GitHub Actions, category: infrastructure}
+  - {name: GitLab CI, category: infrastructure, aliases: [gitlab ci/cd]}
+  - {name: CircleCI, category: infrastructure, aliases: [circle ci]}
+  - {name: ArgoCD, category: infrastructure, aliases: [argo cd]}
+  - {name: Spinnaker, category: infrastructure}
+  - {name: Prometheus, category: infrastructure}
+  - {name: Grafana, category: infrastructure}
+  - {name: Datadog, category: infrastructure}
+  - {name: New Relic, category: infrastructure}
+  - {name: Splunk, category: infrastructure}
+  - {name: PagerDuty, category: infrastructure}
+  - {name: OpenTelemetry, category: infrastructure, aliases: [otel]}
+  - {name: Sentry, category: infrastructure, match: {require_context: true}}
+  - {name: Linux, category: infrastructure}
+  - {name: Git, category: infrastructure}
+  - {name: Bazel, category: infrastructure}
+  - {name: CMake, category: infrastructure}
+  - {name: CloudFormation, category: infrastructure}
+  - {name: AWS CDK, slug: aws-cdk, category: infrastructure, aliases: [{alias: cdk, require_context: true}]}
+  - {name: Packer, category: infrastructure, match: {require_context: true}}
+  - {name: Crossplane, category: infrastructure}
+  - {name: Nix, category: infrastructure, match: {require_context: true}}
+
+  # ── Databases & data stores ──────────────────────────────────
+  - {name: PostgreSQL, category: databases, aliases: [postgres, psql]}
+  - {name: MySQL, category: databases}
+  - {name: MariaDB, category: databases}
+  - {name: SQLite, category: databases}
+  - {name: SQL Server, slug: sql-server, category: databases, aliases: [mssql, microsoft sql server]}
+  - {name: Oracle Database, slug: oracle-db, category: databases, aliases: [{alias: oracle, require_context: true}]}
+  - {name: MongoDB, category: databases, aliases: [mongo]}
+  - {name: Redis, category: databases}
+  - {name: Cassandra, category: databases}
+  - {name: DynamoDB, category: databases}
+  - {name: Elasticsearch, category: databases, aliases: [elastic search]}
+  - {name: OpenSearch, category: databases}
+  - {name: Neo4j, category: databases}
+  - {name: CouchDB, category: databases}
+  - {name: Couchbase, category: databases}
+  - {name: InfluxDB, category: databases}
+  - {name: TimescaleDB, category: databases}
+  - {name: ClickHouse, category: databases}
+  - {name: Snowflake, category: databases}
+  - {name: BigQuery, category: databases}
+  - {name: Redshift, category: databases}
+  - {name: Firestore, category: databases}
+  - {name: Memcached, category: databases}
+  - {name: etcd, category: databases}
+  - {name: RocksDB, category: databases}
+  - {name: DuckDB, category: databases}
+  - {name: Supabase, category: databases}
+  - {name: CockroachDB, category: databases}
+  - {name: Amazon Aurora, slug: aurora, category: databases, aliases: [aws aurora]}
+  - {name: HBase, category: databases}
+  - {name: Pinecone, category: databases, match: {require_context: true}}
+  - {name: Weaviate, category: databases}
+  - {name: Milvus, category: databases}
+  - {name: Qdrant, category: databases}
+  - {name: pgvector, category: databases}
+
+  # ── Testing ──────────────────────────────────────────────────
+  - {name: Jest, category: testing}
+  - {name: Mocha, category: testing, match: {require_context: true}}
+  - {name: Cypress, category: testing, match: {require_context: true}}
+  - {name: Playwright, category: testing}
+  - {name: Selenium, category: testing}
+  - {name: pytest, category: testing}
+  - {name: JUnit, category: testing}
+  - {name: TestNG, category: testing}
+  - {name: RSpec, category: testing}
+  - {name: Vitest, category: testing}
+  - {name: Testing Library, category: testing, aliases: [react testing library]}
+  - {name: Cucumber, category: testing, match: {require_context: true}}
+  - {name: Postman, category: testing}
+  - {name: k6, category: testing, match: {case_sensitive: true}}
+  - {name: JMeter, category: testing}
+  - {name: Locust, category: testing, match: {require_context: true}}
+  - {name: Storybook, category: testing}
+  - {name: xUnit, category: testing}
+  - {name: NUnit, category: testing}
+  - {name: PHPUnit, category: testing}
+  - {name: Robot Framework, category: testing}
+  - {name: Appium, category: testing}
+
+  # ── Messaging & streaming ────────────────────────────────────
+  - {name: Kafka, category: messaging, aliases: [apache kafka]}
+  - {name: RabbitMQ, category: messaging}
+  - {name: ActiveMQ, category: messaging}
+  - {name: SQS, category: messaging}
+  - {name: SNS, category: messaging}
+  - {name: Google Pub/Sub, slug: pubsub, category: messaging, aliases: [pub/sub, cloud pub/sub]}
+  - {name: NATS, category: messaging, match: {case_sensitive: true}}
+  - {name: ZeroMQ, category: messaging}
+  - {name: MQTT, category: messaging}
+  - {name: Kinesis, category: messaging}
+  - {name: EventBridge, category: messaging}
+  - {name: Celery, category: messaging}
+  - {name: Sidekiq, category: messaging}
+  - {name: Temporal, category: messaging, match: {require_context: true}}
+  - {name: Apache Pulsar, slug: pulsar, category: messaging, aliases: [{alias: pulsar, require_context: true}]}
+  - {name: Protobuf, category: messaging, aliases: [protocol buffers]}
+
+  # ── Data engineering & analytics ─────────────────────────────
+  - {name: Airflow, category: data_engineering, aliases: [apache airflow]}
+  - {name: dbt, category: data_engineering}
+  - {name: Spark, category: data_engineering, aliases: [apache spark, pyspark]}
+  - {name: Hadoop, category: data_engineering}
+  - {name: Flink, category: data_engineering, aliases: [apache flink]}
+  - {name: Apache Beam, slug: beam, category: data_engineering, aliases: [{alias: beam, require_context: true}]}
+  - {name: Dagster, category: data_engineering}
+  - {name: Prefect, category: data_engineering, match: {require_context: true}}
+  - {name: Luigi, category: data_engineering, match: {require_context: true}}
+  - {name: Fivetran, category: data_engineering}
+  - {name: Airbyte, category: data_engineering}
+  - {name: Databricks, category: data_engineering}
+  - {name: Trino, category: data_engineering}
+  - {name: Presto, category: data_engineering, match: {require_context: true}}
+  - {name: Hive, category: data_engineering, match: {require_context: true}}
+  - {name: Apache Iceberg, slug: iceberg, category: data_engineering, aliases: [{alias: iceberg, require_context: true}]}
+  - {name: Delta Lake, category: data_engineering}
+  - {name: Parquet, category: data_engineering}
+  - {name: Avro, category: data_engineering}
+  - {name: Great Expectations, category: data_engineering}
+  - {name: Looker, category: data_engineering}
+  - {name: Tableau, category: data_engineering}
+  - {name: Power BI, category: data_engineering}
+  - {name: Metabase, category: data_engineering}
+  - {name: Superset, category: data_engineering}
+  - {name: pandas, category: data_engineering}
+  - {name: NumPy, category: data_engineering}
+
+  # ── AI / ML ──────────────────────────────────────────────────
+  - {name: PyTorch, category: ai_ml}
+  - {name: TensorFlow, category: ai_ml}
+  - {name: Keras, category: ai_ml}
+  - {name: scikit-learn, category: ai_ml, aliases: [sklearn]}
+  - {name: XGBoost, category: ai_ml}
+  - {name: LightGBM, category: ai_ml}
+  - {name: Hugging Face, slug: hugging-face, category: ai_ml, aliases: [huggingface, {alias: transformers, require_context: true}]}
+  - {name: LangChain, category: ai_ml}
+  - {name: LlamaIndex, category: ai_ml}
+  - {name: OpenAI, category: ai_ml, match: {require_context: true}, aliases: [openai api]}
+  - {name: Anthropic, category: ai_ml, match: {require_context: true}, aliases: [claude api]}
+  - {name: MLflow, category: ai_ml}
+  - {name: Kubeflow, category: ai_ml}
+  - name: Ray
+    category: ai_ml
+    match: {case_sensitive: true, require_context: true}
+  - {name: JAX, category: ai_ml, match: {case_sensitive: true}}
+  - {name: spaCy, category: ai_ml}
+  - {name: NLTK, category: ai_ml}
+  - {name: OpenCV, category: ai_ml}
+  - {name: CUDA, category: ai_ml}
+  - {name: ONNX, category: ai_ml}
+  - {name: Weights & Biases, slug: wandb, category: ai_ml, aliases: [wandb]}
+  - {name: DVC, category: ai_ml}
+  - {name: Triton, category: ai_ml, match: {require_context: true}}
+
+  # ── Security ─────────────────────────────────────────────────
+  - {name: OAuth, category: security, aliases: [oauth2, oauth 2.0]}
+  - {name: OIDC, category: security, aliases: [openid connect]}
+  - {name: SAML, category: security}
+  - {name: JWT, category: security}
+  - {name: TLS, category: security, aliases: [ssl/tls]}
+  - {name: Burp Suite, category: security, aliases: [burp]}
+  - {name: Metasploit, category: security}
+  - {name: Nmap, category: security}
+  - {name: Wireshark, category: security}
+  - {name: OWASP, category: security}
+  - {name: SIEM, category: security}
+  - {name: Keycloak, category: security}
+  - {name: Auth0, category: security}
+  - {name: Okta, category: security}
+  - {name: Active Directory, category: security}
+  - {name: Kerberos, category: security}
+  - {name: PKI, category: security}
+  - {name: CrowdStrike, category: security}
+  - {name: Semgrep, category: security}
+  - {name: Snyk, category: security}

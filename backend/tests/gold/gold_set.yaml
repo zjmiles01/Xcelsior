@@ -1,0 +1,746 @@
+# Gold-set v1: hand-labeled job descriptions for extractor evaluation.
+# Labels record what a careful human reader would extract — they are the
+# truth the extractor is measured against, never adjusted to match its
+# output. Grow this file over time; ~30 docs now, target 100+.
+#
+# Fields: technologies maps slug -> requirement level (required|preferred|mentioned).
+# canonical_title null means "a human couldn't map this to a family either".
+
+documents:
+  - id: gold-001
+    title: "Senior Backend Engineer"
+    text: |
+      About the role
+      We build the payments platform that processes millions of transactions daily.
+
+      What you'll do
+      • Design and ship APIs in Python using FastAPI
+      • Own PostgreSQL schema design and query performance
+      • Operate services in Docker on AWS
+
+      Requirements
+      • 5+ years of backend experience
+      • Deep experience with Python and PostgreSQL
+      • Comfort with Docker and CI/CD pipelines
+
+      Nice to have
+      • Redis caching experience
+      • Terraform
+
+      Benefits
+      This is a hybrid role (3 days in office). Salary range: $170,000 - $210,000 per year.
+    technologies:
+      python: required
+      fastapi: mentioned
+      postgresql: required
+      docker: required
+      aws: mentioned
+      redis: preferred
+      terraform: preferred
+    canonical_title: backend-engineer
+    experience_level: senior
+    years_of_experience: 5
+    arrangement: hybrid
+    salary_annual_min: 170000
+    salary_annual_max: 210000
+
+  - id: gold-002
+    title: "Software Engineer, Infrastructure"
+    text: |
+      Our infrastructure team keeps the go-to-market machine running. We are
+      scaling fast and our services must go further every quarter.
+
+      Requirements
+      • Strong programming experience in Go and familiarity with gRPC
+      • Production Kubernetes experience
+      • Experience operating Prometheus and Grafana
+
+      This position is fully remote (US).
+    technologies:
+      go: required
+      grpc: required
+      kubernetes: required
+      prometheus: required
+      grafana: required
+    canonical_title: infrastructure-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: remote
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-003
+    title: "Data Scientist II"
+    text: |
+      Join our analytics group to shape product decisions.
+
+      Qualifications
+      • Proficiency in R and Python for statistical analysis
+      • Fluent SQL
+      • 2-4 years of relevant experience
+
+      Compensation
+      This is a contract position paying $55 - $70 per hour.
+    technologies:
+      r: required
+      python: required
+      sql: required
+    canonical_title: data-scientist
+    experience_level: mid
+    years_of_experience: 2
+    arrangement: null
+    salary_annual_min: 114400
+    salary_annual_max: 145600
+
+  - id: gold-004
+    title: "Frontend Engineer (Early Career)"
+    text: |
+      Help us craft delightful user experiences.
+
+      What you'll need
+      • 1+ years of experience building web apps with React and TypeScript
+      • Familiarity with Next.js and modern CSS
+
+      Bonus points
+      • GraphQL
+      • Storybook
+
+      We offer up to $135,000 annually, equity, and full benefits.
+    technologies:
+      react: required
+      typescript: required
+      nextjs: required
+      css: required
+      graphql: preferred
+      storybook: preferred
+    canonical_title: frontend-engineer
+    experience_level: entry
+    years_of_experience: 1
+    arrangement: null
+    salary_annual_min: 135000
+    salary_annual_max: 135000
+
+  - id: gold-005
+    title: "Embedded Software Engineer"
+    text: |
+      Build firmware for our sensor platform.
+
+      Requirements
+      • Expert-level C/C++ for resource-constrained devices
+      • Experience with CMake and hardware debugging
+      • Familiarity with Linux device drivers
+
+      On-site in our Austin lab five days a week.
+    technologies:
+      c: required
+      cpp: required
+      cmake: required
+      linux: required
+    canonical_title: embedded-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: onsite
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-006
+    title: "Java Developer - Payments"
+    text: |
+      Start date: spring 2027. Our cohort program kicks off each spring.
+
+      Requirements
+      • 3+ years of experience with Java and Spring Boot
+      • Experience with Kafka and MySQL
+      • Solid grasp of REST API design
+
+      Hybrid schedule: Tuesdays and Thursdays in office.
+    technologies:
+      java: required
+      spring: required
+      kafka: required
+      mysql: required
+    canonical_title: software-engineer
+    experience_level: mid
+    years_of_experience: 3
+    arrangement: hybrid
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-007
+    title: "Staff Machine Learning Engineer"
+    text: |
+      Own model training infrastructure end to end.
+
+      What we're looking for
+      • Deep PyTorch experience and distributed training with Ray
+      • CUDA performance tuning skills
+      • Experience deploying models on SageMaker
+      • MLflow for experiment tracking
+
+      Salary: $220,000 - $280,000 per year. Fully remote.
+    technologies:
+      pytorch: required
+      ray: required
+      cuda: required
+      sagemaker: required
+      mlflow: required
+    canonical_title: machine-learning-engineer
+    experience_level: staff_plus
+    years_of_experience: null
+    arrangement: remote
+    salary_annual_min: 220000
+    salary_annual_max: 280000
+
+  - id: gold-008
+    title: "DevOps Engineer"
+    text: |
+      Requirements
+      • Terraform and Ansible for infrastructure as code
+      • Kubernetes administration in AWS (EKS)
+      • Monitoring with Datadog
+
+      Compensation: $140k–$180k per year depending on experience.
+    technologies:
+      terraform: required
+      ansible: required
+      kubernetes: required
+      aws: required
+      eks: required
+      datadog: required
+    canonical_title: devops-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: null
+    salary_annual_min: 140000
+    salary_annual_max: 180000
+
+  - id: gold-009
+    title: "iOS Engineer, Consumer App"
+    text: |
+      We move with swift precision when our users need us.
+
+      Requirements
+      • 4+ years of iOS development experience with Swift and SwiftUI
+      • Experience with Objective-C codebases a plus
+
+      Hybrid, San Francisco.
+    technologies:
+      swift: required
+      swiftui: required
+      objective-c: mentioned
+    canonical_title: ios-engineer
+    experience_level: mid
+    years_of_experience: 4
+    arrangement: hybrid
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-010
+    title: "Security Engineer - Detection & Response"
+    text: |
+      Responsibilities
+      • Build detections in our SIEM (Splunk)
+      • Automate response workflows in Python
+      • Harden our OAuth and SAML integrations
+
+      Requirements
+      • 3+ years in security operations experience
+      • Scripting skills in Python or Bash
+    technologies:
+      siem: mentioned
+      splunk: mentioned
+      python: required
+      oauth: mentioned
+      saml: mentioned
+      bash: required
+    canonical_title: security-engineer
+    experience_level: mid
+    years_of_experience: 3
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-011
+    title: "Sr. Full Stack Developer"
+    text: |
+      Requirements
+      • Ruby on Rails in production at scale
+      • PostgreSQL and Redis
+      • Background jobs with Sidekiq
+      • JavaScript and React on the frontend
+
+      $150,000 to $185,000 a year. Remote-first company.
+    technologies:
+      rails: required
+      postgresql: required
+      redis: required
+      sidekiq: required
+      javascript: required
+      react: required
+    canonical_title: full-stack-engineer
+    experience_level: senior
+    years_of_experience: null
+    arrangement: remote
+    salary_annual_min: 150000
+    salary_annual_max: 185000
+
+  - id: gold-012
+    title: "Data Engineer, Analytics Platform"
+    text: |
+      What you'll do
+      • Build ELT pipelines with Airflow and dbt
+      • Model data in Snowflake
+      • Process events with Spark on Databricks
+
+      Requirements
+      • 4+ years of data engineering experience
+      • Expert SQL and solid Python
+    technologies:
+      airflow: mentioned
+      dbt: mentioned
+      snowflake: mentioned
+      spark: mentioned
+      databricks: mentioned
+      sql: required
+      python: required
+    canonical_title: data-engineer
+    experience_level: mid
+    years_of_experience: 4
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-013
+    title: "Marketing Operations Manager"
+    text: |
+      Drive our go-to-market campaigns and spring product launches. You will
+      go above and beyond to make every campaign land.
+
+      Requirements
+      • 5+ years of marketing operations experience
+      • Excellent communication skills
+    technologies: {}
+    canonical_title: null
+    experience_level: senior
+    years_of_experience: 5
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-014
+    title: "Platform Engineer II - Developer Experience"
+    text: |
+      Requirements
+      • Experience building internal tooling in Go or Python
+      • CI/CD with GitHub Actions
+      • Docker and Kubernetes fluency
+
+      Up to $95/hr for this 12-month contract.
+    technologies:
+      go: required
+      python: required
+      github-actions: required
+      docker: required
+      kubernetes: required
+    canonical_title: platform-engineer
+    experience_level: mid
+    years_of_experience: null
+    arrangement: null
+    salary_annual_min: 197600
+    salary_annual_max: 197600
+
+  - id: gold-015
+    title: "Site Reliability Engineer"
+    text: |
+      Keep our platform at 99.99%.
+
+      Must-haves
+      • Linux internals and networking depth
+      • Kubernetes, Helm charts, and Istio service mesh experience
+      • On-call experience with PagerDuty
+
+      Nice to have
+      • Envoy proxy internals
+    technologies:
+      linux: required
+      kubernetes: required
+      helm: required
+      istio: required
+      pagerduty: required
+      envoy: preferred
+    canonical_title: site-reliability-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-016
+    title: "Android Developer"
+    text: |
+      Requirements
+      • Kotlin and Jetpack Compose experience
+      • Consuming GraphQL APIs
+      • Writing tests with JUnit
+
+      Salary band: $130,000 - $165,000 annually. Hybrid in NYC.
+    technologies:
+      kotlin: required
+      jetpack-compose: required
+      graphql: required
+      junit: required
+    canonical_title: android-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: hybrid
+    salary_annual_min: 130000
+    salary_annual_max: 165000
+
+  - id: gold-017
+    title: "Principal Software Engineer, Storage"
+    text: |
+      Design the next generation of our distributed storage engine.
+
+      Qualifications
+      • 10+ years of systems experience
+      • Rust or C++ for performance-critical code
+      • Deep understanding of RocksDB or similar LSM stores
+
+      Base salary $250,000 - $320,000 per year.
+    technologies:
+      rust: required
+      cpp: required
+      rocksdb: required
+    canonical_title: software-engineer
+    experience_level: staff_plus
+    years_of_experience: 10
+    arrangement: null
+    salary_annual_min: 250000
+    salary_annual_max: 320000
+
+  - id: gold-018
+    title: "QA Automation Engineer"
+    text: |
+      Requirements
+      • Test automation with Playwright or Cypress
+      • API testing with Postman
+      • CI integration experience with Jenkins
+
+      This role is fully remote.
+    technologies:
+      playwright: required
+      cypress: required
+      postman: required
+      jenkins: required
+    canonical_title: qa-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: remote
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-019
+    title: "Analytics Engineer"
+    text: |
+      What you'll do
+      • Own our dbt models and BigQuery warehouse
+      • Build Looker dashboards stakeholders trust
+
+      Requirements
+      • 2+ years of analytics engineering experience
+      • Expert SQL
+    technologies:
+      dbt: mentioned
+      bigquery: mentioned
+      looker: mentioned
+      sql: required
+    canonical_title: analytics-engineer
+    experience_level: mid
+    years_of_experience: 2
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-020
+    title: "Backend Developer (Node)"
+    text: |
+      Requirements
+      • Node.js and TypeScript in production
+      • Express or NestJS frameworks
+      • MongoDB and Redis
+      • Messaging with RabbitMQ
+
+      $120K base, remote position.
+    technologies:
+      nodejs: required
+      typescript: required
+      express: required
+      nestjs: required
+      mongodb: required
+      redis: required
+      rabbitmq: required
+    canonical_title: backend-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: remote
+    salary_annual_min: 120000
+    salary_annual_max: 120000
+
+  - id: gold-021
+    title: "Machine Learning Engineer - NLP"
+    text: |
+      Requirements
+      • Hugging Face transformers ecosystem experience
+      • Fine-tuning with PyTorch and JAX
+      • Vector search with Pinecone or pgvector
+      • LangChain for orchestration
+
+      Nice to have
+      • spaCy and NLTK background
+    technologies:
+      hugging-face: required
+      pytorch: required
+      jax: required
+      pinecone: required
+      pgvector: required
+      langchain: required
+      spacy: preferred
+      nltk: preferred
+    canonical_title: machine-learning-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-022
+    title: "Cloud Engineer (Azure)"
+    text: |
+      Requirements
+      • 3+ years of experience with Microsoft Azure
+      • Infrastructure as code with Terraform or Pulumi
+      • PowerShell scripting
+      • Azure Active Directory administration
+    technologies:
+      azure: required
+      terraform: required
+      pulumi: required
+      powershell: required
+      active-directory: required
+    canonical_title: cloud-engineer
+    experience_level: mid
+    years_of_experience: 3
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-023
+    title: "Software Engineer in Test"
+    text: |
+      Join our quality guild.
+
+      Requirements
+      • Java or Python test frameworks (TestNG, pytest)
+      • Selenium grid experience at scale
+      • Performance testing with JMeter or k6
+    technologies:
+      java: required
+      python: required
+      testng: required
+      pytest: required
+      selenium: required
+      jmeter: required
+      k6: required
+    canonical_title: qa-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-024
+    title: "Engineering Manager, Payments"
+    text: |
+      Lead a team of eight engineers building payment rails.
+
+      About you
+      • 8+ years of engineering experience, 2+ leading teams
+      • Comfortable reviewing Python and TypeScript
+      • Familiar with PostgreSQL-backed service architectures
+
+      Hybrid, Seattle. $210,000 - $250,000 per year plus equity.
+    technologies:
+      python: required
+      typescript: required
+      postgresql: required
+    canonical_title: engineering-manager
+    experience_level: staff_plus
+    years_of_experience: 8
+    arrangement: hybrid
+    salary_annual_min: 210000
+    salary_annual_max: 250000
+
+  - id: gold-025
+    title: "Junior Web Developer"
+    text: |
+      Great first role for a new grad.
+
+      Requirements
+      • HTML, CSS, and JavaScript fundamentals
+      • Exposure to PHP or Laravel
+      • Git workflow basics
+
+      $70,000 - $85,000 a year. In-office in Chicago.
+    technologies:
+      html: required
+      css: required
+      javascript: required
+      php: required
+      laravel: required
+      git: required
+    canonical_title: frontend-engineer
+    experience_level: entry
+    years_of_experience: null
+    arrangement: onsite
+    salary_annual_min: 70000
+    salary_annual_max: 85000
+
+  - id: gold-026
+    title: "Streaming Platform Engineer"
+    text: |
+      Requirements
+      • Apache Kafka at scale (we run 40+ clusters)
+      • Stream processing with Flink or Kafka Streams
+      • Schema management with Protobuf and Avro
+      • Observability with OpenTelemetry
+    technologies:
+      kafka: required
+      flink: required
+      protobuf: required
+      avro: required
+      opentelemetry: required
+    canonical_title: platform-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-027
+    title: "Solutions Engineer"
+    text: |
+      Partner with customers to integrate our API platform.
+
+      What you bring
+      • Ability to read and write Python and JavaScript
+      • Experience explaining REST and GraphQL APIs
+      • SQL comfort for data questions
+
+      Travel up to 25%. Remote (US).
+    technologies:
+      python: required
+      javascript: required
+      graphql: required
+      sql: required
+    canonical_title: solutions-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: remote
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-028
+    title: "Game Developer (Unity)"
+    text: |
+      Requirements
+      • 3+ years of Unity experience shipping mobile titles
+      • Strong C# skills
+      • Familiarity with C++ engine internals a plus
+    technologies:
+      csharp: required
+      cpp: preferred
+    canonical_title: game-engineer
+    experience_level: mid
+    years_of_experience: 3
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-029
+    title: "Sr Data Platform Engineer"
+    text: |
+      Requirements
+      • Python and Scala for data pipelines
+      • Orchestration with Dagster or Airflow
+      • Lakehouse formats: Delta Lake, Apache Iceberg
+      • Trino for federated queries
+
+      Fully remote. $185,000 - $215,000 per year.
+    technologies:
+      python: required
+      scala: required
+      dagster: required
+      airflow: required
+      delta-lake: required
+      iceberg: required
+      trino: required
+    canonical_title: data-engineer
+    experience_level: senior
+    years_of_experience: null
+    arrangement: remote
+    salary_annual_min: 185000
+    salary_annual_max: 215000
+
+  - id: gold-030
+    title: "Full-Stack Engineer, Growth"
+    text: |
+      What you'll do
+      • Ship experiments across our React frontend and Django backend
+
+      Requirements
+      • 2+ years of full-stack experience
+      • React, TypeScript, and Tailwind CSS
+      • Django and PostgreSQL
+      • Comfort with Docker
+
+      Nice to have
+      • Experience with Celery and Redis
+    technologies:
+      react: required
+      typescript: required
+      tailwind: required
+      django: required
+      postgresql: required
+      docker: required
+      celery: preferred
+      redis: preferred
+    canonical_title: full-stack-engineer
+    experience_level: mid
+    years_of_experience: 2
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null
+
+  - id: gold-031
+    title: "Software Engineer, Flight Software"
+    text: |
+      Build flight software for launch vehicles.
+
+      Requirements
+      • Strong C++ development skills on embedded Linux
+      • Python for tooling and test automation
+
+      ITAR Requirements
+      To conform to U.S. Government export regulations, applicant must be a
+      (i) U.S. citizen or national, (ii) U.S. lawful permanent resident, or
+      (iii) protected individual as defined by 8 U.S.C. 1324b(a)(3).
+    technologies:
+      cpp: required
+      linux: required
+      python: required
+    canonical_title: software-engineer
+    experience_level: null
+    years_of_experience: null
+    arrangement: null
+    salary_annual_min: null
+    salary_annual_max: null

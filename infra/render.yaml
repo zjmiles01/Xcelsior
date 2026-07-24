@@ -1,0 +1,60 @@
+# Render blueprint: API web service + nightly ingestion cron + Postgres.
+# The static frontend deploys separately (Cloudflare Pages / Netlify) with
+# /api/* proxied to the web service so SPA and API share one origin.
+services:
+  - type: web
+    name: xcelsior-api
+    runtime: docker
+    rootDir: backend
+    plan: starter
+    healthCheckPath: /health
+    preDeployCommand: alembic upgrade head
+    envVars:
+      - key: XCELSIOR_DATABASE_URL
+        fromDatabase:
+          name: xcelsior-db
+          property: connectionString
+      - key: XCELSIOR_ENVIRONMENT
+        value: production
+      # Auth is per-user accounts with session cookies (M10, ADR-007) — no
+      # shared secret to configure. In production, XCELSIOR_ENVIRONMENT must
+      # be "production" so the session cookie is issued with the Secure flag
+      # (TLS-only). The app and SPA share one origin, so the cookie flows
+      # without CORS credentials machinery.
+      # Render routes external traffic through a single load-balancer hop that
+      # sets X-Forwarded-For, so the real client IP is the last entry. Trusting
+      # exactly one proxy lets the rate limiter (ADR-006) key off that
+      # un-forgeable value; a client prepending spoofed entries cannot change
+      # it. If Render's proxy topology ever changes, adjust this hop count.
+      - key: XCELSIOR_TRUSTED_PROXY_COUNT
+        value: "1"
+
+  - type: cron
+    name: xcelsior-ingest
+    runtime: docker
+    rootDir: backend
+    plan: starter
+    schedule: "15 7 * * *"  # nightly, 07:15 UTC
+    # The full nightly pipeline, in dependency order: fetch -> sync
+    # taxonomy -> extract -> geocode -> snapshot (history!) ->
+    # bump-data-version (cache truncate + new ETags) -> dead-man's-switch
+    # ping (replace URL after creating the check at healthchecks.io).
+    dockerCommand: >-
+      sh -c "xcelsior ingest && xcelsior expire && xcelsior load-taxonomy
+      && xcelsior extract && xcelsior geocode && xcelsior dedupe
+      && xcelsior snapshot && xcelsior bump-data-version
+      && curl -fsS $HEALTHCHECK_PING_URL"
+    envVars:
+      - key: XCELSIOR_DATABASE_URL
+        fromDatabase:
+          name: xcelsior-db
+          property: connectionString
+      - key: XCELSIOR_ENVIRONMENT
+        value: production
+      - key: HEALTHCHECK_PING_URL
+        sync: false
+
+databases:
+  - name: xcelsior-db
+    plan: basic-256mb
+    postgresMajorVersion: "16"

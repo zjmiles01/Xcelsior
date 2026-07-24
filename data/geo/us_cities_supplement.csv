@@ -1,0 +1,6 @@
+# Hand-maintained additions for places below the GeoNames population cutoff
+# that appear as real employer locations in the corpus (same schema as
+# us_cities.csv). Add here when the geocode CLI reports a legitimate city
+# as unresolved.
+city,state,latitude,longitude,population
+Starbase,TX,25.9975,-97.156,500

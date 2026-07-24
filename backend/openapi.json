@@ -1,0 +1,4301 @@
+{
+  "components": {
+    "schemas": {
+      "AnalysisHeader": {
+        "properties": {
+          "analyzed_jobs": {
+            "title": "Analyzed Jobs",
+            "type": "integer"
+          },
+          "low_confidence": {
+            "title": "Low Confidence",
+            "type": "boolean"
+          },
+          "min_sample_size": {
+            "title": "Min Sample Size",
+            "type": "integer"
+          },
+          "salary_disclosed": {
+            "title": "Salary Disclosed",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "analyzed_jobs",
+          "salary_disclosed",
+          "low_confidence",
+          "min_sample_size"
+        ],
+        "title": "AnalysisHeader",
+        "type": "object"
+      },
+      "AnalysisResponse": {
+        "properties": {
+          "arrangements": {
+            "items": {
+              "$ref": "#/components/schemas/DistributionBucket"
+            },
+            "title": "Arrangements",
+            "type": "array"
+          },
+          "categories": {
+            "items": {
+              "$ref": "#/components/schemas/CategoryStats"
+            },
+            "title": "Categories",
+            "type": "array"
+          },
+          "computed_at": {
+            "format": "date-time",
+            "title": "Computed At",
+            "type": "string"
+          },
+          "data_version": {
+            "title": "Data Version",
+            "type": "string"
+          },
+          "experience_levels": {
+            "items": {
+              "$ref": "#/components/schemas/DistributionBucket"
+            },
+            "title": "Experience Levels",
+            "type": "array"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/JobFilters"
+          },
+          "header": {
+            "$ref": "#/components/schemas/AnalysisHeader"
+          },
+          "salary": {
+            "$ref": "#/components/schemas/SalarySummary"
+          },
+          "top_companies": {
+            "items": {
+              "$ref": "#/components/schemas/CompanyStat"
+            },
+            "title": "Top Companies",
+            "type": "array"
+          }
+        },
+        "required": [
+          "filters",
+          "header",
+          "categories",
+          "arrangements",
+          "experience_levels",
+          "salary",
+          "top_companies",
+          "computed_at",
+          "data_version"
+        ],
+        "title": "AnalysisResponse",
+        "type": "object"
+      },
+      "Body_upload_resume_api_v1_resumes_post": {
+        "properties": {
+          "file": {
+            "contentMediaType": "application/octet-stream",
+            "title": "File",
+            "type": "string"
+          }
+        },
+        "required": [
+          "file"
+        ],
+        "title": "Body_upload_resume_api_v1_resumes_post",
+        "type": "object"
+      },
+      "CategoryStats": {
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "distinct_technologies": {
+            "title": "Distinct Technologies",
+            "type": "integer"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "technologies": {
+            "items": {
+              "$ref": "#/components/schemas/TechnologyStat"
+            },
+            "title": "Technologies",
+            "type": "array"
+          }
+        },
+        "required": [
+          "category",
+          "label",
+          "technologies",
+          "distinct_technologies"
+        ],
+        "title": "CategoryStats",
+        "type": "object"
+      },
+      "CoOccurrenceStat": {
+        "description": "A technology that appears alongside this skill more often than its\nbase rate in the same scope predicts (lift >= the floor).",
+        "properties": {
+          "baseline_share": {
+            "title": "Baseline Share",
+            "type": "number"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "lift": {
+            "title": "Lift",
+            "type": "number"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "share_given_tech": {
+            "title": "Share Given Tech",
+            "type": "number"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "category",
+          "count",
+          "share_given_tech",
+          "baseline_share",
+          "lift"
+        ],
+        "title": "CoOccurrenceStat",
+        "type": "object"
+      },
+      "CompanyStat": {
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "count"
+        ],
+        "title": "CompanyStat",
+        "type": "object"
+      },
+      "DistributionBucket": {
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "share": {
+            "title": "Share",
+            "type": "number"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "count",
+          "share"
+        ],
+        "title": "DistributionBucket",
+        "type": "object"
+      },
+      "EducationIn": {
+        "properties": {
+          "degree_raw": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Degree Raw"
+          },
+          "end_year": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Year"
+          },
+          "field_of_study": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Field Of Study"
+          },
+          "id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "institution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Institution"
+          },
+          "start_year": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Year"
+          }
+        },
+        "title": "EducationIn",
+        "type": "object"
+      },
+      "EducationOut": {
+        "properties": {
+          "degree_level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Degree Level"
+          },
+          "degree_raw": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Degree Raw"
+          },
+          "end_year": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Year"
+          },
+          "evidence_end": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence End"
+          },
+          "evidence_start": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Start"
+          },
+          "field_of_study": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Field Of Study"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "institution": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Institution"
+          },
+          "origin": {
+            "title": "Origin",
+            "type": "string"
+          },
+          "position": {
+            "title": "Position",
+            "type": "integer"
+          },
+          "start_year": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Year"
+          }
+        },
+        "required": [
+          "id",
+          "institution",
+          "degree_raw",
+          "degree_level",
+          "field_of_study",
+          "start_year",
+          "end_year",
+          "evidence_start",
+          "evidence_end",
+          "position",
+          "origin"
+        ],
+        "title": "EducationOut",
+        "type": "object"
+      },
+      "ExperienceAlignmentOut": {
+        "properties": {
+          "candidate_level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate Level"
+          },
+          "candidate_years": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Candidate Years"
+          },
+          "job_level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Level"
+          },
+          "job_years": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Years"
+          },
+          "verdict": {
+            "title": "Verdict",
+            "type": "string"
+          }
+        },
+        "required": [
+          "verdict",
+          "candidate_level",
+          "candidate_years",
+          "job_level",
+          "job_years"
+        ],
+        "title": "ExperienceAlignmentOut",
+        "type": "object"
+      },
+      "ExperienceIn": {
+        "properties": {
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company"
+          },
+          "end_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Date"
+          },
+          "id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "is_current": {
+            "default": false,
+            "title": "Is Current",
+            "type": "boolean"
+          },
+          "start_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Date"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "title_raw": {
+            "title": "Title Raw",
+            "type": "string"
+          }
+        },
+        "required": [
+          "title_raw"
+        ],
+        "title": "ExperienceIn",
+        "type": "object"
+      },
+      "ExperienceOut": {
+        "properties": {
+          "canonical_title_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Canonical Title Id"
+          },
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company"
+          },
+          "end_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "End Date"
+          },
+          "evidence_end": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence End"
+          },
+          "evidence_start": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Start"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "is_current": {
+            "title": "Is Current",
+            "type": "boolean"
+          },
+          "level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Level"
+          },
+          "origin": {
+            "title": "Origin",
+            "type": "string"
+          },
+          "position": {
+            "title": "Position",
+            "type": "integer"
+          },
+          "start_date": {
+            "anyOf": [
+              {
+                "format": "date",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Start Date"
+          },
+          "summary": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Summary"
+          },
+          "title_raw": {
+            "title": "Title Raw",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "company",
+          "title_raw",
+          "canonical_title_id",
+          "level",
+          "start_date",
+          "end_date",
+          "is_current",
+          "summary",
+          "evidence_start",
+          "evidence_end",
+          "position",
+          "origin"
+        ],
+        "title": "ExperienceOut",
+        "type": "object"
+      },
+      "FacetBucket": {
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "share": {
+            "title": "Share",
+            "type": "number"
+          },
+          "value": {
+            "title": "Value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "value",
+          "count",
+          "share"
+        ],
+        "title": "FacetBucket",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "JobDetail": {
+        "properties": {
+          "apply_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Apply Url"
+          },
+          "arrangement": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Arrangement"
+          },
+          "canonical_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Canonical Title"
+          },
+          "canonical_title_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Canonical Title Slug"
+          },
+          "company_name": {
+            "title": "Company Name",
+            "type": "string"
+          },
+          "description_html": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description Html"
+          },
+          "description_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description Text"
+          },
+          "employment_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Employment Type"
+          },
+          "experience_level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Experience Level"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "last_seen_at": {
+            "format": "date-time",
+            "title": "Last Seen At",
+            "type": "string"
+          },
+          "locations": {
+            "items": {
+              "$ref": "#/components/schemas/JobLocationOut"
+            },
+            "title": "Locations",
+            "type": "array"
+          },
+          "posted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Posted At"
+          },
+          "salary": {
+            "$ref": "#/components/schemas/SalaryOut"
+          },
+          "sections": {
+            "items": {
+              "$ref": "#/components/schemas/JobSectionOut"
+            },
+            "title": "Sections",
+            "type": "array"
+          },
+          "source": {
+            "$ref": "#/components/schemas/SourceOut"
+          },
+          "status": {
+            "title": "Status",
+            "type": "string"
+          },
+          "technologies": {
+            "items": {
+              "$ref": "#/components/schemas/JobTechnologyOut"
+            },
+            "title": "Technologies",
+            "type": "array"
+          },
+          "title_raw": {
+            "title": "Title Raw",
+            "type": "string"
+          },
+          "years_of_experience": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Years Of Experience"
+          }
+        },
+        "required": [
+          "id",
+          "title_raw",
+          "canonical_title",
+          "canonical_title_slug",
+          "company_name",
+          "locations",
+          "arrangement",
+          "experience_level",
+          "years_of_experience",
+          "employment_type",
+          "salary",
+          "status",
+          "posted_at",
+          "last_seen_at",
+          "apply_url",
+          "description_text",
+          "description_html",
+          "sections",
+          "technologies",
+          "source"
+        ],
+        "title": "JobDetail",
+        "type": "object"
+      },
+      "JobFilters": {
+        "additionalProperties": false,
+        "description": "Everything is optional; the empty filter means the national market.",
+        "properties": {
+          "arrangement": {
+            "anyOf": [
+              {
+                "enum": [
+                  "onsite",
+                  "hybrid",
+                  "remote"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Arrangement"
+          },
+          "experience_level": {
+            "anyOf": [
+              {
+                "enum": [
+                  "entry",
+                  "mid",
+                  "senior",
+                  "staff_plus"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Experience Level"
+          },
+          "location": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Location"
+          },
+          "q": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Q"
+          },
+          "radius_miles": {
+            "default": 50,
+            "title": "Radius Miles",
+            "type": "integer"
+          },
+          "salary_min": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Salary Min"
+          },
+          "technologies": {
+            "default": [],
+            "items": {
+              "type": "string"
+            },
+            "title": "Technologies",
+            "type": "array"
+          },
+          "title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Title"
+          }
+        },
+        "title": "JobFilters",
+        "type": "object"
+      },
+      "JobListItem": {
+        "properties": {
+          "apply_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Apply Url"
+          },
+          "company_name": {
+            "title": "Company Name",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "locations": {
+            "items": {
+              "$ref": "#/components/schemas/JobLocationOut"
+            },
+            "title": "Locations",
+            "type": "array"
+          },
+          "posted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Posted At"
+          },
+          "title_raw": {
+            "title": "Title Raw",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title_raw",
+          "company_name",
+          "apply_url",
+          "posted_at",
+          "locations"
+        ],
+        "title": "JobListItem",
+        "type": "object"
+      },
+      "JobListResponse": {
+        "properties": {
+          "facets": {
+            "$ref": "#/components/schemas/SearchFacets"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/JobListItem"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "next_cursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Next Cursor"
+          },
+          "relaxations": {
+            "default": [],
+            "items": {
+              "$ref": "#/components/schemas/RelaxationOption"
+            },
+            "title": "Relaxations",
+            "type": "array"
+          },
+          "sort": {
+            "enum": [
+              "recency",
+              "salary",
+              "relevance"
+            ],
+            "title": "Sort",
+            "type": "string"
+          },
+          "total": {
+            "title": "Total",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "items",
+          "total",
+          "sort",
+          "facets",
+          "next_cursor"
+        ],
+        "title": "JobListResponse",
+        "type": "object"
+      },
+      "JobLocationOut": {
+        "properties": {
+          "is_remote": {
+            "title": "Is Remote",
+            "type": "boolean"
+          },
+          "raw_text": {
+            "title": "Raw Text",
+            "type": "string"
+          }
+        },
+        "required": [
+          "raw_text",
+          "is_remote"
+        ],
+        "title": "JobLocationOut",
+        "type": "object"
+      },
+      "JobMatchOut": {
+        "properties": {
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/ScoreComponentOut"
+            },
+            "title": "Components",
+            "type": "array"
+          },
+          "experience": {
+            "$ref": "#/components/schemas/ExperienceAlignmentOut"
+          },
+          "job": {
+            "$ref": "#/components/schemas/MatchJobSummary"
+          },
+          "matched_skills": {
+            "items": {
+              "$ref": "#/components/schemas/MatchSkillOut"
+            },
+            "title": "Matched Skills",
+            "type": "array"
+          },
+          "missing_skills": {
+            "items": {
+              "$ref": "#/components/schemas/MatchSkillOut"
+            },
+            "title": "Missing Skills",
+            "type": "array"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reasons",
+            "type": "array"
+          },
+          "score": {
+            "title": "Score",
+            "type": "integer"
+          },
+          "title": {
+            "$ref": "#/components/schemas/TitleAlignmentOut"
+          }
+        },
+        "required": [
+          "job",
+          "score",
+          "components",
+          "matched_skills",
+          "missing_skills",
+          "title",
+          "experience",
+          "reasons"
+        ],
+        "title": "JobMatchOut",
+        "type": "object"
+      },
+      "JobSectionOut": {
+        "properties": {
+          "end_offset": {
+            "title": "End Offset",
+            "type": "integer"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "start_offset": {
+            "title": "Start Offset",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "kind",
+          "start_offset",
+          "end_offset"
+        ],
+        "title": "JobSectionOut",
+        "type": "object"
+      },
+      "JobTechnologyOut": {
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "confidence": {
+            "title": "Confidence",
+            "type": "number"
+          },
+          "evidence_snippet": {
+            "title": "Evidence Snippet",
+            "type": "string"
+          },
+          "evidence_start": {
+            "title": "Evidence Start",
+            "type": "integer"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "requirement_level": {
+            "title": "Requirement Level",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "category",
+          "requirement_level",
+          "confidence",
+          "evidence_snippet",
+          "evidence_start"
+        ],
+        "title": "JobTechnologyOut",
+        "type": "object"
+      },
+      "LocationOption": {
+        "properties": {
+          "job_count": {
+            "title": "Job Count",
+            "type": "integer"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "label",
+          "job_count"
+        ],
+        "title": "LocationOption",
+        "type": "object"
+      },
+      "LoginRequest": {
+        "description": "Login does not re-validate password length: complexity rules change\nover time and must never lock an existing account out of signing in.",
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "title": "LoginRequest",
+        "type": "object"
+      },
+      "MatchJobSummary": {
+        "description": "Enough of a job to render and link a match card. Deliberately no\ndescription: matches never serve posting text \u2014 the job-detail endpoint\ndoes, under the display-policy gate.",
+        "properties": {
+          "apply_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Apply Url"
+          },
+          "arrangement": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Arrangement"
+          },
+          "canonical_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Canonical Title"
+          },
+          "canonical_title_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Canonical Title Slug"
+          },
+          "company_name": {
+            "title": "Company Name",
+            "type": "string"
+          },
+          "experience_level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Experience Level"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "locations": {
+            "items": {
+              "$ref": "#/components/schemas/JobLocationOut"
+            },
+            "title": "Locations",
+            "type": "array"
+          },
+          "posted_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Posted At"
+          },
+          "salary": {
+            "$ref": "#/components/schemas/SalaryOut"
+          },
+          "title_raw": {
+            "title": "Title Raw",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title_raw",
+          "canonical_title",
+          "canonical_title_slug",
+          "company_name",
+          "locations",
+          "arrangement",
+          "experience_level",
+          "salary",
+          "posted_at",
+          "apply_url"
+        ],
+        "title": "MatchJobSummary",
+        "type": "object"
+      },
+      "MatchProfileSummary": {
+        "description": "The candidate side of the match, for context and honesty: how many\nskills actually join the taxonomy, which title families were matched\non, and the derived seniority the experience component used.",
+        "properties": {
+          "experience_level": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Experience Level"
+          },
+          "full_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Full Name"
+          },
+          "highest_degree": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Highest Degree"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "matched_skill_count": {
+            "title": "Matched Skill Count",
+            "type": "integer"
+          },
+          "reviewed_at": {
+            "format": "date-time",
+            "title": "Reviewed At",
+            "type": "string"
+          },
+          "title_families": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Title Families",
+            "type": "array"
+          },
+          "unmapped_skill_count": {
+            "title": "Unmapped Skill Count",
+            "type": "integer"
+          },
+          "years_experience": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Years Experience"
+          }
+        },
+        "required": [
+          "id",
+          "full_name",
+          "reviewed_at",
+          "matched_skill_count",
+          "unmapped_skill_count",
+          "title_families",
+          "experience_level",
+          "years_experience",
+          "highest_degree"
+        ],
+        "title": "MatchProfileSummary",
+        "type": "object"
+      },
+      "MatchSkillOut": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "requirement_level": {
+            "title": "Requirement Level",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "requirement_level"
+        ],
+        "title": "MatchSkillOut",
+        "type": "object"
+      },
+      "MatchWeights": {
+        "description": "The nominal component weights, surfaced so the ranking is legible.",
+        "properties": {
+          "experience": {
+            "title": "Experience",
+            "type": "number"
+          },
+          "skills": {
+            "title": "Skills",
+            "type": "number"
+          },
+          "title": {
+            "title": "Title",
+            "type": "number"
+          }
+        },
+        "required": [
+          "skills",
+          "title",
+          "experience"
+        ],
+        "title": "MatchWeights",
+        "type": "object"
+      },
+      "MetaResponse": {
+        "description": "Everything the filter UI needs to render its options.",
+        "properties": {
+          "data_version": {
+            "title": "Data Version",
+            "type": "string"
+          },
+          "locations": {
+            "items": {
+              "$ref": "#/components/schemas/LocationOption"
+            },
+            "title": "Locations",
+            "type": "array"
+          },
+          "technologies": {
+            "items": {
+              "$ref": "#/components/schemas/TechnologyOption"
+            },
+            "title": "Technologies",
+            "type": "array"
+          },
+          "titles": {
+            "items": {
+              "$ref": "#/components/schemas/TitleOption"
+            },
+            "title": "Titles",
+            "type": "array"
+          }
+        },
+        "required": [
+          "titles",
+          "technologies",
+          "locations",
+          "data_version"
+        ],
+        "title": "MetaResponse",
+        "type": "object"
+      },
+      "ProfileDetail": {
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "title": "Created At",
+            "type": "string"
+          },
+          "education": {
+            "items": {
+              "$ref": "#/components/schemas/EducationOut"
+            },
+            "title": "Education",
+            "type": "array"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "experiences": {
+            "items": {
+              "$ref": "#/components/schemas/ExperienceOut"
+            },
+            "title": "Experiences",
+            "type": "array"
+          },
+          "extracted_at": {
+            "format": "date-time",
+            "title": "Extracted At",
+            "type": "string"
+          },
+          "extractor_version": {
+            "title": "Extractor Version",
+            "type": "integer"
+          },
+          "full_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Full Name"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
+          "resume": {
+            "$ref": "#/components/schemas/ResumeOut"
+          },
+          "reviewed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewed At"
+          },
+          "skills": {
+            "items": {
+              "$ref": "#/components/schemas/SkillOut"
+            },
+            "title": "Skills",
+            "type": "array"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "title": "Updated At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "resume",
+          "full_name",
+          "email",
+          "phone",
+          "extractor_version",
+          "extracted_at",
+          "reviewed_at",
+          "created_at",
+          "updated_at",
+          "skills",
+          "experiences",
+          "education"
+        ],
+        "title": "ProfileDetail",
+        "type": "object"
+      },
+      "ProfileListItem": {
+        "properties": {
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "experience_count": {
+            "title": "Experience Count",
+            "type": "integer"
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string"
+          },
+          "full_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Full Name"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "reviewed_at": {
+            "anyOf": [
+              {
+                "format": "date-time",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reviewed At"
+          },
+          "skill_count": {
+            "title": "Skill Count",
+            "type": "integer"
+          },
+          "uploaded_at": {
+            "format": "date-time",
+            "title": "Uploaded At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "full_name",
+          "email",
+          "filename",
+          "uploaded_at",
+          "reviewed_at",
+          "skill_count",
+          "experience_count"
+        ],
+        "title": "ProfileListItem",
+        "type": "object"
+      },
+      "ProfileListResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ProfileListItem"
+            },
+            "title": "Items",
+            "type": "array"
+          }
+        },
+        "required": [
+          "items"
+        ],
+        "title": "ProfileListResponse",
+        "type": "object"
+      },
+      "ProfileMatchesResponse": {
+        "properties": {
+          "computed_at": {
+            "format": "date-time",
+            "title": "Computed At",
+            "type": "string"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/JobFilters"
+          },
+          "matched_jobs": {
+            "title": "Matched Jobs",
+            "type": "integer"
+          },
+          "matches": {
+            "items": {
+              "$ref": "#/components/schemas/JobMatchOut"
+            },
+            "title": "Matches",
+            "type": "array"
+          },
+          "profile": {
+            "$ref": "#/components/schemas/MatchProfileSummary"
+          },
+          "returned": {
+            "title": "Returned",
+            "type": "integer"
+          },
+          "total_active_jobs": {
+            "title": "Total Active Jobs",
+            "type": "integer"
+          },
+          "weights": {
+            "$ref": "#/components/schemas/MatchWeights"
+          }
+        },
+        "required": [
+          "profile",
+          "filters",
+          "weights",
+          "total_active_jobs",
+          "matched_jobs",
+          "returned",
+          "matches",
+          "computed_at"
+        ],
+        "title": "ProfileMatchesResponse",
+        "type": "object"
+      },
+      "ProfileUpdate": {
+        "description": "Full-document replacement. `reviewed` is the document state, not an\nevent: true sets reviewed_at (now, if not already set), false clears\nit \u2014 editing after review naturally un-reviews by sending false.",
+        "properties": {
+          "education": {
+            "items": {
+              "$ref": "#/components/schemas/EducationIn"
+            },
+            "title": "Education",
+            "type": "array"
+          },
+          "email": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Email"
+          },
+          "experiences": {
+            "items": {
+              "$ref": "#/components/schemas/ExperienceIn"
+            },
+            "title": "Experiences",
+            "type": "array"
+          },
+          "full_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Full Name"
+          },
+          "phone": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Phone"
+          },
+          "reviewed": {
+            "default": false,
+            "title": "Reviewed",
+            "type": "boolean"
+          },
+          "skills": {
+            "items": {
+              "$ref": "#/components/schemas/SkillIn"
+            },
+            "title": "Skills",
+            "type": "array"
+          }
+        },
+        "required": [
+          "skills",
+          "experiences",
+          "education"
+        ],
+        "title": "ProfileUpdate",
+        "type": "object"
+      },
+      "RelaxationOption": {
+        "description": "One honest way out of a zero-result search: what would change,\nand how many jobs that buys. Never applied server-side.",
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/JobFilters"
+          },
+          "kind": {
+            "enum": [
+              "radius",
+              "salary",
+              "technology"
+            ],
+            "title": "Kind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "description",
+          "filters",
+          "count"
+        ],
+        "title": "RelaxationOption",
+        "type": "object"
+      },
+      "ResumeOut": {
+        "properties": {
+          "extracted_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Extracted Text"
+          },
+          "file_size": {
+            "title": "File Size",
+            "type": "integer"
+          },
+          "filename": {
+            "title": "Filename",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "page_count": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Page Count"
+          },
+          "parser_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parser Name"
+          },
+          "parser_version": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Parser Version"
+          },
+          "uploaded_at": {
+            "format": "date-time",
+            "title": "Uploaded At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "filename",
+          "file_size",
+          "page_count",
+          "parser_name",
+          "parser_version",
+          "uploaded_at",
+          "extracted_text"
+        ],
+        "title": "ResumeOut",
+        "type": "object"
+      },
+      "SalaryOut": {
+        "description": "Both representations, deliberately: raw for honest display\n('$60/hr'), normalized annual USD for anything comparative.",
+        "properties": {
+          "annual_max": {
+            "anyOf": [
+              {
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Max"
+          },
+          "annual_min": {
+            "anyOf": [
+              {
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Annual Min"
+          },
+          "currency": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Currency"
+          },
+          "max_amount": {
+            "anyOf": [
+              {
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Max Amount"
+          },
+          "min_amount": {
+            "anyOf": [
+              {
+                "pattern": "^(?!^[-+.]*$)[+-]?0*\\d*\\.?\\d*$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Min Amount"
+          },
+          "period": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Period"
+          }
+        },
+        "required": [
+          "min_amount",
+          "max_amount",
+          "currency",
+          "period",
+          "annual_min",
+          "annual_max"
+        ],
+        "title": "SalaryOut",
+        "type": "object"
+      },
+      "SalarySummary": {
+        "properties": {
+          "disclosed_count": {
+            "title": "Disclosed Count",
+            "type": "integer"
+          },
+          "median": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Median"
+          },
+          "p25": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P25"
+          },
+          "p75": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P75"
+          }
+        },
+        "required": [
+          "disclosed_count",
+          "p25",
+          "median",
+          "p75"
+        ],
+        "title": "SalarySummary",
+        "type": "object"
+      },
+      "SavedJobIdsResponse": {
+        "description": "The ids the current user has saved \u2014 the search/detail UIs use this to\nrender the Save button's saved state without leaking anything else.",
+        "properties": {
+          "job_ids": {
+            "items": {
+              "type": "integer"
+            },
+            "title": "Job Ids",
+            "type": "array"
+          }
+        },
+        "required": [
+          "job_ids"
+        ],
+        "title": "SavedJobIdsResponse",
+        "type": "object"
+      },
+      "SavedJobMatch": {
+        "description": "The M9 match for a saved job, minus the job (which the card already\nholds). Present only when the user has a reviewed profile to match\nagainst; `score` may be 0 for a saved job with no overlap \u2014 a saved job\nis always explained, never dropped.",
+        "properties": {
+          "components": {
+            "items": {
+              "$ref": "#/components/schemas/ScoreComponentOut"
+            },
+            "title": "Components",
+            "type": "array"
+          },
+          "experience": {
+            "$ref": "#/components/schemas/ExperienceAlignmentOut"
+          },
+          "matched_skills": {
+            "items": {
+              "$ref": "#/components/schemas/MatchSkillOut"
+            },
+            "title": "Matched Skills",
+            "type": "array"
+          },
+          "missing_skills": {
+            "items": {
+              "$ref": "#/components/schemas/MatchSkillOut"
+            },
+            "title": "Missing Skills",
+            "type": "array"
+          },
+          "reasons": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Reasons",
+            "type": "array"
+          },
+          "score": {
+            "title": "Score",
+            "type": "integer"
+          },
+          "title": {
+            "$ref": "#/components/schemas/TitleAlignmentOut"
+          }
+        },
+        "required": [
+          "score",
+          "components",
+          "matched_skills",
+          "missing_skills",
+          "title",
+          "experience",
+          "reasons"
+        ],
+        "title": "SavedJobMatch",
+        "type": "object"
+      },
+      "SavedJobOut": {
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/MatchJobSummary"
+          },
+          "match": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SavedJobMatch"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "saved_at": {
+            "format": "date-time",
+            "title": "Saved At",
+            "type": "string"
+          }
+        },
+        "required": [
+          "job",
+          "saved_at",
+          "match"
+        ],
+        "title": "SavedJobOut",
+        "type": "object"
+      },
+      "SavedJobRequest": {
+        "properties": {
+          "job_id": {
+            "title": "Job Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "job_id"
+        ],
+        "title": "SavedJobRequest",
+        "type": "object"
+      },
+      "SavedJobsResponse": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/SavedJobOut"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "profile": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/MatchProfileSummary"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "profile_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile Id"
+          }
+        },
+        "required": [
+          "profile",
+          "profile_id",
+          "items"
+        ],
+        "title": "SavedJobsResponse",
+        "type": "object"
+      },
+      "ScoreComponentOut": {
+        "properties": {
+          "applicable": {
+            "title": "Applicable",
+            "type": "boolean"
+          },
+          "contribution": {
+            "title": "Contribution",
+            "type": "number"
+          },
+          "detail": {
+            "title": "Detail",
+            "type": "string"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "weight": {
+            "title": "Weight",
+            "type": "number"
+          }
+        },
+        "required": [
+          "key",
+          "label",
+          "weight",
+          "score",
+          "applicable",
+          "contribution",
+          "detail"
+        ],
+        "title": "ScoreComponentOut",
+        "type": "object"
+      },
+      "SearchFacets": {
+        "description": "Counts over the full matching set, not just the returned page.",
+        "properties": {
+          "arrangements": {
+            "items": {
+              "$ref": "#/components/schemas/FacetBucket"
+            },
+            "title": "Arrangements",
+            "type": "array"
+          },
+          "experience_levels": {
+            "items": {
+              "$ref": "#/components/schemas/FacetBucket"
+            },
+            "title": "Experience Levels",
+            "type": "array"
+          }
+        },
+        "required": [
+          "arrangements",
+          "experience_levels"
+        ],
+        "title": "SearchFacets",
+        "type": "object"
+      },
+      "SignupRequest": {
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "password": {
+            "title": "Password",
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "title": "SignupRequest",
+        "type": "object"
+      },
+      "SkillDetailResponse": {
+        "properties": {
+          "arrangements": {
+            "items": {
+              "$ref": "#/components/schemas/DistributionBucket"
+            },
+            "title": "Arrangements",
+            "type": "array"
+          },
+          "co_occurring": {
+            "items": {
+              "$ref": "#/components/schemas/CoOccurrenceStat"
+            },
+            "title": "Co Occurring",
+            "type": "array"
+          },
+          "computed_at": {
+            "format": "date-time",
+            "title": "Computed At",
+            "type": "string"
+          },
+          "data_version": {
+            "title": "Data Version",
+            "type": "string"
+          },
+          "experience_levels": {
+            "items": {
+              "$ref": "#/components/schemas/DistributionBucket"
+            },
+            "title": "Experience Levels",
+            "type": "array"
+          },
+          "filters": {
+            "$ref": "#/components/schemas/JobFilters"
+          },
+          "header": {
+            "$ref": "#/components/schemas/SkillHeader"
+          },
+          "requirement_levels": {
+            "items": {
+              "$ref": "#/components/schemas/DistributionBucket"
+            },
+            "title": "Requirement Levels",
+            "type": "array"
+          },
+          "salary": {
+            "$ref": "#/components/schemas/SkillSalary"
+          },
+          "trend": {
+            "$ref": "#/components/schemas/SkillTrend"
+          }
+        },
+        "required": [
+          "filters",
+          "header",
+          "requirement_levels",
+          "arrangements",
+          "experience_levels",
+          "co_occurring",
+          "salary",
+          "trend",
+          "computed_at",
+          "data_version"
+        ],
+        "title": "SkillDetailResponse",
+        "type": "object"
+      },
+      "SkillHeader": {
+        "properties": {
+          "analyzed_jobs": {
+            "title": "Analyzed Jobs",
+            "type": "integer"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "jobs_with_tech": {
+            "title": "Jobs With Tech",
+            "type": "integer"
+          },
+          "low_confidence": {
+            "title": "Low Confidence",
+            "type": "boolean"
+          },
+          "min_sample_size": {
+            "title": "Min Sample Size",
+            "type": "integer"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "share": {
+            "title": "Share",
+            "type": "number"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "category",
+          "analyzed_jobs",
+          "jobs_with_tech",
+          "share",
+          "low_confidence",
+          "min_sample_size"
+        ],
+        "title": "SkillHeader",
+        "type": "object"
+      },
+      "SkillIn": {
+        "description": "Keep an existing skill (id) or add a manual one (label, optionally\nmapped to a taxonomy slug so it stays matchable).",
+        "properties": {
+          "id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Id"
+          },
+          "label": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Label"
+          },
+          "technology_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Technology Slug"
+          }
+        },
+        "title": "SkillIn",
+        "type": "object"
+      },
+      "SkillOut": {
+        "properties": {
+          "confidence": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Confidence"
+          },
+          "evidence_snippet": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Snippet"
+          },
+          "evidence_start": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Evidence Start"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "occurrences": {
+            "title": "Occurrences",
+            "type": "integer"
+          },
+          "origin": {
+            "title": "Origin",
+            "type": "string"
+          },
+          "technology_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Technology Id"
+          }
+        },
+        "required": [
+          "id",
+          "technology_id",
+          "label",
+          "confidence",
+          "occurrences",
+          "evidence_snippet",
+          "evidence_start",
+          "origin"
+        ],
+        "title": "SkillOut",
+        "type": "object"
+      },
+      "SkillSalary": {
+        "description": "Percentiles over disclosed-salary jobs with this skill, plus the\nall-jobs national baseline the delta is measured against.",
+        "properties": {
+          "delta_vs_national": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Delta Vs National"
+          },
+          "disclosed_count": {
+            "title": "Disclosed Count",
+            "type": "integer"
+          },
+          "median": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Median"
+          },
+          "national_disclosed_count": {
+            "title": "National Disclosed Count",
+            "type": "integer"
+          },
+          "national_median": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "National Median"
+          },
+          "p25": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P25"
+          },
+          "p75": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "P75"
+          }
+        },
+        "required": [
+          "disclosed_count",
+          "p25",
+          "median",
+          "p75",
+          "national_median",
+          "national_disclosed_count",
+          "delta_vs_national"
+        ],
+        "title": "SkillSalary",
+        "type": "object"
+      },
+      "SkillTrend": {
+        "properties": {
+          "days_observed": {
+            "title": "Days Observed",
+            "type": "integer"
+          },
+          "geo_slug": {
+            "title": "Geo Slug",
+            "type": "string"
+          },
+          "min_days": {
+            "title": "Min Days",
+            "type": "integer"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/TrendPoint"
+            },
+            "title": "Points",
+            "type": "array"
+          },
+          "status": {
+            "enum": [
+              "ok",
+              "collecting_history"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "days_observed",
+          "min_days",
+          "geo_slug",
+          "points"
+        ],
+        "title": "SkillTrend",
+        "type": "object"
+      },
+      "SourceOut": {
+        "properties": {
+          "attribution_text": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attribution Text"
+          },
+          "attribution_url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attribution Url"
+          },
+          "display_policy": {
+            "title": "Display Policy",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "display_policy",
+          "attribution_text",
+          "attribution_url"
+        ],
+        "title": "SourceOut",
+        "type": "object"
+      },
+      "TechnologyOption": {
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "category"
+        ],
+        "title": "TechnologyOption",
+        "type": "object"
+      },
+      "TechnologyStat": {
+        "properties": {
+          "count": {
+            "title": "Count",
+            "type": "integer"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "required_count": {
+            "title": "Required Count",
+            "type": "integer"
+          },
+          "share": {
+            "title": "Share",
+            "type": "number"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name",
+          "count",
+          "share",
+          "required_count"
+        ],
+        "title": "TechnologyStat",
+        "type": "object"
+      },
+      "TitleAlignmentOut": {
+        "properties": {
+          "job_title": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Title"
+          },
+          "job_title_slug": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Job Title Slug"
+          },
+          "matched": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Matched"
+          }
+        },
+        "required": [
+          "matched",
+          "job_title",
+          "job_title_slug"
+        ],
+        "title": "TitleAlignmentOut",
+        "type": "object"
+      },
+      "TitleOption": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          }
+        },
+        "required": [
+          "slug",
+          "name"
+        ],
+        "title": "TitleOption",
+        "type": "object"
+      },
+      "TrendPoint": {
+        "properties": {
+          "job_count": {
+            "title": "Job Count",
+            "type": "integer"
+          },
+          "snapshot_date": {
+            "format": "date",
+            "title": "Snapshot Date",
+            "type": "string"
+          }
+        },
+        "required": [
+          "snapshot_date",
+          "job_count"
+        ],
+        "title": "TrendPoint",
+        "type": "object"
+      },
+      "UserOut": {
+        "properties": {
+          "email": {
+            "title": "Email",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "email"
+        ],
+        "title": "UserOut",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "Xcelsior API",
+    "version": "0.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/v1/analysis": {
+      "get": {
+        "operationId": "analysis_api_v1_analysis_get",
+        "parameters": [
+          {
+            "description": "Free-text query (websearch syntax)",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Free-text query (websearch syntax)",
+              "title": "Q"
+            }
+          },
+          {
+            "description": "Canonical title family slug",
+            "in": "query",
+            "name": "title",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Canonical title family slug",
+              "title": "Title"
+            }
+          },
+          {
+            "description": "City slug, e.g. san-francisco-ca",
+            "in": "query",
+            "name": "location",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "City slug, e.g. san-francisco-ca",
+              "title": "Location"
+            }
+          },
+          {
+            "in": "query",
+            "name": "radius_miles",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 500,
+              "minimum": 1,
+              "title": "Radius Miles",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Technology slugs (AND)",
+            "in": "query",
+            "name": "tech",
+            "required": false,
+            "schema": {
+              "default": [],
+              "description": "Technology slugs (AND)",
+              "items": {
+                "type": "string"
+              },
+              "title": "Tech",
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "arrangement",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "onsite",
+                    "hybrid",
+                    "remote"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Arrangement"
+            }
+          },
+          {
+            "in": "query",
+            "name": "experience_level",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "entry",
+                    "mid",
+                    "senior",
+                    "staff_plus"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Experience Level"
+            }
+          },
+          {
+            "description": "Annual USD floor",
+            "in": "query",
+            "name": "salary_min",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Annual USD floor",
+              "title": "Salary Min"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AnalysisResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Analysis",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/api/v1/auth/login": {
+      "post": {
+        "description": "Exchange email + password for a session cookie. A wrong email or\npassword is an indistinguishable 401 (no account-enumeration signal).",
+        "operationId": "login_api_v1_auth_login_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Login",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/logout": {
+      "post": {
+        "description": "Revoke the current session and clear the cookie. Idempotent: safe to\ncall without a valid session (no error, cookie still cleared).",
+        "operationId": "logout_api_v1_auth_logout_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Logout",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/me": {
+      "get": {
+        "operationId": "me_api_v1_auth_me_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Me",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/auth/signup": {
+      "post": {
+        "description": "Create an account and sign the new user in (a session cookie is set),\nso the client can move straight into resume onboarding.",
+        "operationId": "signup_api_v1_auth_signup_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignupRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserOut"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Signup",
+        "tags": [
+          "auth"
+        ]
+      }
+    },
+    "/api/v1/jobs": {
+      "get": {
+        "description": "List matching active jobs with facet counts and keyset pagination.\n\nBoth the count and the rows come from the shared predicate \u2014 this is\nthe endpoint dashboard stats click through to, and its total must\nalways equal the number the user clicked.",
+        "operationId": "list_jobs_api_v1_jobs_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sort",
+            "required": false,
+            "schema": {
+              "default": "recency",
+              "enum": [
+                "recency",
+                "salary",
+                "relevance"
+              ],
+              "title": "Sort",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Opaque keyset cursor from a previous page",
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Opaque keyset cursor from a previous page",
+              "title": "Cursor"
+            }
+          },
+          {
+            "description": "Free-text query (websearch syntax)",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Free-text query (websearch syntax)",
+              "title": "Q"
+            }
+          },
+          {
+            "description": "Canonical title family slug",
+            "in": "query",
+            "name": "title",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Canonical title family slug",
+              "title": "Title"
+            }
+          },
+          {
+            "description": "City slug, e.g. san-francisco-ca",
+            "in": "query",
+            "name": "location",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "City slug, e.g. san-francisco-ca",
+              "title": "Location"
+            }
+          },
+          {
+            "in": "query",
+            "name": "radius_miles",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 500,
+              "minimum": 1,
+              "title": "Radius Miles",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Technology slugs (AND)",
+            "in": "query",
+            "name": "tech",
+            "required": false,
+            "schema": {
+              "default": [],
+              "description": "Technology slugs (AND)",
+              "items": {
+                "type": "string"
+              },
+              "title": "Tech",
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "arrangement",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "onsite",
+                    "hybrid",
+                    "remote"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Arrangement"
+            }
+          },
+          {
+            "in": "query",
+            "name": "experience_level",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "entry",
+                    "mid",
+                    "senior",
+                    "staff_plus"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Experience Level"
+            }
+          },
+          {
+            "description": "Annual USD floor",
+            "in": "query",
+            "name": "salary_min",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Annual USD floor",
+              "title": "Salary Min"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Jobs",
+        "tags": [
+          "jobs"
+        ]
+      }
+    },
+    "/api/v1/jobs/{job_id}": {
+      "get": {
+        "operationId": "get_job_api_v1_jobs__job_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "required": true,
+            "schema": {
+              "title": "Job Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Job",
+        "tags": [
+          "jobs"
+        ]
+      }
+    },
+    "/api/v1/meta": {
+      "get": {
+        "operationId": "meta_api_v1_meta_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetaResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Meta",
+        "tags": [
+          "analytics"
+        ]
+      }
+    },
+    "/api/v1/profiles": {
+      "get": {
+        "description": "The current user's profiles only \u2014 the query is scoped to the\nsession, so it can never surface another account's data.",
+        "operationId": "list_profiles_api_v1_profiles_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Profiles",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/v1/profiles/{profile_id}": {
+      "delete": {
+        "description": "Delete the profile and its uploaded resume (user-owned data).",
+        "operationId": "remove_profile_api_v1_profiles__profile_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Remove Profile",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "get": {
+        "operationId": "get_profile_api_v1_profiles__profile_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Profile",
+        "tags": [
+          "profiles"
+        ]
+      },
+      "put": {
+        "description": "Full-document reconcile: id = keep/update, no id = create as\nmanual, absent = delete. One transaction \u2014 the review screen's Save.",
+        "operationId": "put_profile_api_v1_profiles__profile_id__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProfileUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Put Profile",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/v1/profiles/{profile_id}/matches": {
+      "get": {
+        "description": "Rank active jobs against this profile (M9). The profile must belong to\nthe signed-in user (404 otherwise) and be reviewed (409 otherwise \u2014\ninvariant #9: an unreviewed extraction is not usable). Accepts the same\n`JobFilters` the market surface does; the candidate job pool is the\nshared predicate, so the counts agree with search.",
+        "operationId": "profile_matches_api_v1_profiles__profile_id__matches_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Free-text query (websearch syntax)",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Free-text query (websearch syntax)",
+              "title": "Q"
+            }
+          },
+          {
+            "description": "Canonical title family slug",
+            "in": "query",
+            "name": "title",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Canonical title family slug",
+              "title": "Title"
+            }
+          },
+          {
+            "description": "City slug, e.g. san-francisco-ca",
+            "in": "query",
+            "name": "location",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "City slug, e.g. san-francisco-ca",
+              "title": "Location"
+            }
+          },
+          {
+            "in": "query",
+            "name": "radius_miles",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 500,
+              "minimum": 1,
+              "title": "Radius Miles",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Technology slugs (AND)",
+            "in": "query",
+            "name": "tech",
+            "required": false,
+            "schema": {
+              "default": [],
+              "description": "Technology slugs (AND)",
+              "items": {
+                "type": "string"
+              },
+              "title": "Tech",
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "arrangement",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "onsite",
+                    "hybrid",
+                    "remote"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Arrangement"
+            }
+          },
+          {
+            "in": "query",
+            "name": "experience_level",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "entry",
+                    "mid",
+                    "senior",
+                    "staff_plus"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Experience Level"
+            }
+          },
+          {
+            "description": "Annual USD floor",
+            "in": "query",
+            "name": "salary_min",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Annual USD floor",
+              "title": "Salary Min"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileMatchesResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Profile Matches",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/v1/profiles/{profile_id}/reextract": {
+      "post": {
+        "description": "Rebuild the profile from the stored resume text, discarding all\nedits \u2014 an explicit user action (ADR-005), useful after taxonomy\ngrowth. The resume bytes and text are untouched.",
+        "operationId": "reextract_profile_api_v1_profiles__profile_id__reextract_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "profile_id",
+            "required": true,
+            "schema": {
+              "title": "Profile Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Reextract Profile",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/v1/resumes": {
+      "post": {
+        "description": "Upload a PDF resume: parse, extract, and return the structured\nprofile in one synchronous call (the pipeline is deterministic rules,\nwell under a second). The resume and profile are owned by the uploading\nuser. Re-uploading identical bytes is idempotent and returns the user's\nexisting profile untouched \u2014 edits survive.",
+        "operationId": "upload_resume_api_v1_resumes_post",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/Body_upload_resume_api_v1_resumes_post"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProfileDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Upload Resume",
+        "tags": [
+          "profiles"
+        ]
+      }
+    },
+    "/api/v1/saved-jobs": {
+      "get": {
+        "description": "The saved-jobs dashboard: each saved job with a live match score,\nmatched/missing skills, and reasons drawn from the user's most recently\nreviewed profile.",
+        "operationId": "get_saved_jobs_api_v1_saved_jobs_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedJobsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Saved Jobs",
+        "tags": [
+          "saved-jobs"
+        ]
+      },
+      "post": {
+        "description": "Save a job. Idempotent; returns the updated saved-id set.",
+        "operationId": "create_saved_job_api_v1_saved_jobs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SavedJobRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedJobIdsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Saved Job",
+        "tags": [
+          "saved-jobs"
+        ]
+      }
+    },
+    "/api/v1/saved-jobs/ids": {
+      "get": {
+        "description": "The ids the user has saved \u2014 for rendering the Save button's state in\nsearch and job detail. Saved jobs stay in search; this only toggles UI.",
+        "operationId": "get_saved_job_ids_api_v1_saved_jobs_ids_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SavedJobIdsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Get Saved Job Ids",
+        "tags": [
+          "saved-jobs"
+        ]
+      }
+    },
+    "/api/v1/saved-jobs/{job_id}": {
+      "delete": {
+        "description": "Unsave a job. Idempotent.",
+        "operationId": "delete_saved_job_api_v1_saved_jobs__job_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "job_id",
+            "required": true,
+            "schema": {
+              "title": "Job Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Saved Job",
+        "tags": [
+          "saved-jobs"
+        ]
+      }
+    },
+    "/api/v1/skills/{slug}": {
+      "get": {
+        "operationId": "skill_detail_api_v1_skills__slug__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "title": "Slug",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Free-text query (websearch syntax)",
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Free-text query (websearch syntax)",
+              "title": "Q"
+            }
+          },
+          {
+            "description": "Canonical title family slug",
+            "in": "query",
+            "name": "title",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Canonical title family slug",
+              "title": "Title"
+            }
+          },
+          {
+            "description": "City slug, e.g. san-francisco-ca",
+            "in": "query",
+            "name": "location",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "City slug, e.g. san-francisco-ca",
+              "title": "Location"
+            }
+          },
+          {
+            "in": "query",
+            "name": "radius_miles",
+            "required": false,
+            "schema": {
+              "default": 50,
+              "maximum": 500,
+              "minimum": 1,
+              "title": "Radius Miles",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Technology slugs (AND)",
+            "in": "query",
+            "name": "tech",
+            "required": false,
+            "schema": {
+              "default": [],
+              "description": "Technology slugs (AND)",
+              "items": {
+                "type": "string"
+              },
+              "title": "Tech",
+              "type": "array"
+            }
+          },
+          {
+            "in": "query",
+            "name": "arrangement",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "onsite",
+                    "hybrid",
+                    "remote"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Arrangement"
+            }
+          },
+          {
+            "in": "query",
+            "name": "experience_level",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "entry",
+                    "mid",
+                    "senior",
+                    "staff_plus"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Experience Level"
+            }
+          },
+          {
+            "description": "Annual USD floor",
+            "in": "query",
+            "name": "salary_min",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "minimum": 0,
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Annual USD floor",
+              "title": "Salary Min"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillDetailResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Skill Detail",
+        "tags": [
+          "analytics"
+        ]
+      }
+    }
+  }
+}
