@@ -190,6 +190,7 @@ Xcelsior collects job listings from public applicant tracking system (ATS)
 endpoints:
 - Greenhouse
 - Lever
+  
 These sources provide publicly available job postings that are normalized,
 processed, and analyzed through the Xcelsior ingestion pipeline.
 
