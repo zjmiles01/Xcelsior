@@ -12,12 +12,14 @@ ENV UV_COMPILE_BYTECODE=1 \
 WORKDIR /srv
 
 # Dependency layer first so code changes don't bust the dependency cache.
-COPY pyproject.toml uv.lock ./
+COPY backend/pyproject.toml backend/uv.lock ./
 RUN uv sync --frozen --no-dev --no-install-project
 
-COPY app ./app
-COPY alembic ./alembic
-COPY alembic.ini ./
+COPY backend/app ./app
+COPY backend/alembic ./alembic
+COPY backend/alembic.ini ./
+COPY data ./data
+
 RUN uv sync --frozen --no-dev
 
 ENV PATH="/srv/.venv/bin:$PATH" \
