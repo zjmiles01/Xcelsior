@@ -1,0 +1,60 @@
+name : github action daily job refresh
+
+on: 
+  schedule:
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: "xcelsior-daily-refresh"
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    defaults:
+      run:
+        working-directory: backend
+
+    env:
+      XCELSIOR_DATABASE_URL: ${{ secrets.XCELSIOR_DATABASE_URL }}
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+          cache-dependency-glob: backend/uv.lock
+
+      - name: Install Python
+        run: uv python install
+
+      - name: Install backend dependencies
+        run: uv sync --frozen --no-dev
+
+      - name: Validate database secret
+        run: |
+          if [ -z "$XCELSIOR_DATABASE_URL" ]; then
+            echo "XCELSIOR_DATABASE_URL is missing"
+            exit 1
+          fi
+      
+      - name : Run ingestion
+        run: uv run xcelsior ingest
+
+      - name: Run extraction
+        run: uv run xcelsior extract
+
+      - name: Run geocoding
+        run: uv run xcelsior geocode
+
+      - name: Run deduplication
+        run: uv run xcelsior dedupe
+
+      - name: Build market snapshot
+        run: uv run xcelsior snapshot
