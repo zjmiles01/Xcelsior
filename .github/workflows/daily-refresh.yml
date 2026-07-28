@@ -42,6 +42,8 @@ jobs:
           if [ -z "$XCELSIOR_DATABASE_URL" ]; then
             echo "XCELSIOR_DATABASE_URL is missing"
             exit 1
+          else
+            echo "SECRET EXISTS"
           fi
       
       - name : Run ingestion
