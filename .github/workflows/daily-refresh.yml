@@ -60,3 +60,6 @@ jobs:
 
       - name: Build market snapshot
         run: uv run xcelsior snapshot
+        
+      - name: Bump data version
+        run: uv run xcelsior bump-data-version
