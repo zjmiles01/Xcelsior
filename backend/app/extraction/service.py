@@ -178,6 +178,9 @@ def _extract_one(
         index=index,
         matcher=matcher,
         location_is_remote=location_is_remote,
+        # What ingestion recorded from the source, when the source said
+        # anything: a declared type always outranks one inferred from text.
+        declared_employment_type=job.employment_type,
     )
 
     db.execute(delete(JobTechnology).where(JobTechnology.job_id == job.id))
@@ -211,6 +214,7 @@ def _extract_one(
     job.arrangement = result.arrangement or job.arrangement
     job.years_of_experience = result.years_of_experience
     job.experience_level = result.experience_level or job.experience_level
+    job.employment_type = result.employment_type or job.employment_type
     if result.salary and job.salary_annual_min is None:
         job.salary_min = result.salary.min_amount
         job.salary_max = result.salary.max_amount

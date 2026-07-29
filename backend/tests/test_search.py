@@ -124,6 +124,61 @@ class TestFacets:
         assert levels == {"senior": 2, "staff_plus": 3}
 
 
+class TestEmploymentTypeFilter:
+    """Ground truth (micro_market): internship 2, contract 1, full_time 17,
+    NULL 3 — over the 23 active, deduplicated jobs."""
+
+    def test_internships_are_filterable_on_their_own(self, market, client):
+        body = client.get("/api/v1/jobs", params={"employment_type": "internship"}).json()
+        assert body["total"] == 2
+        assert _count(market, JobFilters(employment_type="internship")) == 2
+
+    def test_full_time_excludes_internships(self, market, client):
+        body = client.get("/api/v1/jobs", params={"employment_type": "full_time"}).json()
+        assert body["total"] == 17
+
+    def test_unknown_also_matches_never_classified_jobs(self, market, client):
+        # NULL (ingested before employment typing) and 'unknown' (classified,
+        # no signal) answer the same user question, so one filter returns both.
+        body = client.get("/api/v1/jobs", params={"employment_type": "unknown"}).json()
+        assert body["total"] == 3
+
+    def test_types_partition_the_market(self, market, client):
+        total = 0
+        for value in ("full_time", "part_time", "internship", "contract", "temporary", "unknown"):
+            total += client.get("/api/v1/jobs", params={"employment_type": value}).json()["total"]
+        assert total == 23
+
+    def test_composes_with_other_filters(self, market, client):
+        # Both internships are NYC frontend jobs.
+        body = client.get(
+            "/api/v1/jobs",
+            params={"employment_type": "internship", "title": "frontend-engineer"},
+        ).json()
+        assert body["total"] == 2
+        body = client.get(
+            "/api/v1/jobs",
+            params={"employment_type": "internship", "title": "backend-engineer"},
+        ).json()
+        assert body["total"] == 0
+
+    def test_unknown_value_is_rejected(self, market, client):
+        assert (
+            client.get("/api/v1/jobs", params={"employment_type": "freelance"}).status_code == 422
+        )
+
+    def test_facets_report_the_distribution(self, market, client):
+        body = client.get("/api/v1/jobs", params={"limit": 1}).json()
+        types = {b["value"]: b["count"] for b in body["facets"]["employment_types"]}
+        assert types == {"full_time": 17, "internship": 2, "contract": 1, "unspecified": 3}
+        assert sum(types.values()) == body["total"] == 23
+
+    def test_filter_is_absent_by_default(self, market, client):
+        # Backward compatibility: a search that never mentions employment
+        # type still sees the whole market, NULL-typed jobs included.
+        assert client.get("/api/v1/jobs").json()["total"] == 23
+
+
 class TestZeroResultRelaxation:
     def test_drops_a_technology_but_never_the_title(self, market, client):
         # Denver has 3 jobs, none with pytorch (the pytorch jobs are

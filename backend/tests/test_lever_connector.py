@@ -74,3 +74,37 @@ def test_missing_optional_fields_do_not_crash() -> None:
     assert posting.description_html is None
     assert posting.location_texts == []
     assert posting.posted_at is None
+    assert posting.employment_type is None
+
+
+class TestEmploymentType:
+    def test_commitment_from_recorded_payload(self, payload: dict) -> None:
+        # The fixture declares "Full-time".
+        assert map_posting(payload).employment_type == "full_time"
+
+    @pytest.mark.parametrize(
+        ("commitment", "expected"),
+        [
+            ("Intern", "internship"),
+            ("Internship", "internship"),
+            ("Co-op", "internship"),
+            ("Student", "internship"),
+            ("Part-time", "part_time"),
+            ("Contract", "contract"),
+            ("Temporary", "temporary"),
+        ],
+    )
+    def test_commitment_vocabulary(self, payload: dict, commitment: str, expected: str) -> None:
+        payload["categories"]["commitment"] = commitment
+
+        assert map_posting(payload).employment_type == expected
+
+    def test_missing_commitment_is_left_to_extraction(self, payload: dict) -> None:
+        del payload["categories"]["commitment"]
+
+        assert map_posting(payload).employment_type is None
+
+    def test_unrecognized_commitment_is_left_to_extraction(self, payload: dict) -> None:
+        payload["categories"]["commitment"] = "Band 4"
+
+        assert map_posting(payload).employment_type is None

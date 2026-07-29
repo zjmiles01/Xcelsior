@@ -22,7 +22,8 @@ POSTED = datetime(2026, 7, 1, tzinfo=UTC)
 
 
 def _posting(external_id: str, title: str = "Backend Engineer", content_hash: str | None = None,
-             locations: list[str] | None = None) -> NormalizedPosting:
+             locations: list[str] | None = None,
+             employment_type: str | None = None) -> NormalizedPosting:
     return NormalizedPosting(
         external_id=external_id,
         title=title,
@@ -31,6 +32,7 @@ def _posting(external_id: str, title: str = "Backend Engineer", content_hash: st
         location_texts=locations if locations is not None else ["San Francisco, CA"],
         posted_at=POSTED,
         content_hash=content_hash or f"hash-{external_id}-{title}",
+        employment_type=employment_type,
         payload={"id": external_id, "title": title},
     )
 
@@ -105,6 +107,44 @@ def test_new_postings_create_raw_and_job_rows(db, fake_source):
     acme = db.scalar(select(Company).where(Company.ats_token == "acme"))
     assert all(j.company_id == acme.id for j in jobs if j.raw_posting_id in
                {r.id for r in raws if r.external_id.startswith("a-")})
+
+
+def test_source_declared_employment_type_is_persisted(db, fake_source):
+    FakeConnector.boards = {
+        "acme": [
+            _posting("a-1", employment_type="internship"),
+            _posting("a-2"),  # source declared nothing
+        ]
+    }
+
+    service.ingest_source(db, source_name="fakeboard")
+
+    source = db.scalar(select(Source).where(Source.name == "fakeboard"))
+    raws = {
+        r.external_id: r.id
+        for r in db.scalars(select(RawPosting).where(RawPosting.source_id == source.id))
+    }
+    jobs = {
+        j.raw_posting_id: j
+        for j in db.scalars(select(Job).where(Job.source_id == source.id))
+    }
+    assert jobs[raws["a-1"]].employment_type == "internship"
+    # NULL, not a guess: extraction fills this in from the text later.
+    assert jobs[raws["a-2"]].employment_type is None
+
+
+def test_changed_posting_refreshes_employment_type(db, fake_source):
+    FakeConnector.boards = {"acme": [_posting("a-1", employment_type="internship")]}
+    service.ingest_source(db, source_name="fakeboard")
+
+    FakeConnector.boards = {
+        "acme": [_posting("a-1", content_hash="changed", employment_type="full_time")]
+    }
+    service.ingest_source(db, source_name="fakeboard")
+
+    source = db.scalar(select(Source).where(Source.name == "fakeboard"))
+    job = db.scalar(select(Job).where(Job.source_id == source.id))
+    assert job.employment_type == "full_time"
 
 
 def test_unchanged_posting_only_touches_last_seen(db, fake_source):

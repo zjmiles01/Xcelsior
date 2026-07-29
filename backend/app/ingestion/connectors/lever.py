@@ -2,6 +2,7 @@ from datetime import UTC, datetime
 
 import httpx
 
+from app.catalog.employment import normalize_declared
 from app.ingestion.connectors.base import NormalizedPosting, hash_payload
 
 BOARD_URL = "https://api.lever.co/v0/postings/{token}"
@@ -58,6 +59,9 @@ def map_posting(posting: dict) -> NormalizedPosting | None:
         location_texts=location_texts,
         posted_at=posted_at,
         content_hash=hash_payload(posting),
+        # Lever states this outright ("Full-time", "Intern"), so it needs no
+        # inference — unrecognized spellings fall through to the classifier.
+        employment_type=normalize_declared(categories.get("commitment")),
         payload=posting,
     )
 

@@ -16,6 +16,8 @@ from typing import Literal, Self
 
 from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 
+from app.catalog.employment import EmploymentType
+
 RADIUS_BUCKETS = (10, 25, 50, 100)
 DEFAULT_RADIUS = 50
 
@@ -35,6 +37,7 @@ class JobFilters(BaseModel):
     technologies: tuple[str, ...] = ()  # AND semantics across slugs
     arrangement: Arrangement | None = None
     experience_level: ExperienceLevel | None = None
+    employment_type: EmploymentType | None = None
     salary_min: int | None = None  # annual USD floor
 
     @field_validator("radius_miles")

@@ -30,6 +30,8 @@ Hand-computed invariants used by the tests:
     median = (200+200)/2 = 200000
   arrangements: hybrid 11, onsite 4, remote 5, unspecified 3
   levels: senior 8, mid 4, entry 5, staff_plus 3, unspecified 3
+  employment types: internship 2 (#13-14), contract 1 (#9),
+    full_time 17, unspecified 3 (#21-23, NULL — never extracted)
   SF 10mi = SF-only jobs + multi = 6+2 = 8 (Oakland ~8mi -> in 10mi? see
     note below), SF 50mi adds San Jose. Oakland-SF is ~8 miles: included
     at 10. So SF10 = 6 SF + 2 Oakland + 2 multi = 10; SF50 = +2 SJ = 12.
@@ -127,6 +129,7 @@ def seed_micro_market(db: Session) -> None:
         from_source: Source | None = None,
         title_text: str | None = None,
         apply_url: str | None = None,
+        employment: str | None = "full_time",
     ) -> None:
         nonlocal counter
         counter += 1
@@ -151,6 +154,7 @@ def seed_micro_market(db: Session) -> None:
             status=status,
             arrangement=arrangement,
             experience_level=level,
+            employment_type=employment,
             salary_annual_min=salary_mid,
             salary_annual_max=salary_mid,
             posted_at=NOW,
@@ -189,31 +193,38 @@ def seed_micro_market(db: Session) -> None:
     for _ in range(2):
         job(**be, arrangement="onsite", level="mid", salary_mid=150_000,
             locations=["oakland"], techs=[("python", "required")])
-    # 9-10: San Jose backend, python merely preferred
-    for _ in range(2):
+    # 9-10: San Jose backend, python merely preferred (#9 is the contract
+    # posting — one non-full-time type that is not an internship)
+    for i in range(2):
         job(**be, arrangement="onsite", level="mid", salary_mid=None,
-            locations=["sj"], techs=[("python", "preferred")])
+            locations=["sj"], techs=[("python", "preferred")],
+            employment="contract" if i == 0 else "full_time")
     # 11-12: multi-location SF+NYC, go required (the count-once probes)
     for _ in range(2):
         job(**be, arrangement="remote", level="senior", salary_mid=250_000,
             locations=["sf", "nyc"], techs=[("go", "required")])
     # 13-17: NYC frontend (#13 gets an apply_url so a URL-rule duplicate
     # can target it below)
+    # (#13-14 are the internships: entry-level frontend, the shape a real
+    # internship posting takes)
     for i in range(5):
         job(**fe, arrangement="hybrid", level="entry", salary_mid=120_000,
             locations=["nyc"],
             apply_url="https://boards.example.com/microcorp/13" if i == 0 else None,
-            techs=[("react", "required"), ("typescript", "mentioned")])
+            techs=[("react", "required"), ("typescript", "mentioned")],
+            employment="internship" if i < 2 else "full_time")
     # 18-20: remote ML, no geocodable location
     for _ in range(3):
         job(title_slug="machine-learning-engineer", arrangement="remote",
             level="staff_plus", salary_mid=300_000,
             locations=[{"raw_text": "Remote - US", "is_remote": True}],
             techs=[("python", "required"), ("pytorch", "required")])
-    # 21-23: Denver, nothing extracted (denominator jobs)
+    # 21-23: Denver, nothing extracted (denominator jobs) — employment_type
+    # stays NULL, the state of every row ingested before employment typing
+    # existed and of anything still awaiting extraction
     for _ in range(3):
         job(title_slug=None, arrangement=None, level=None, salary_mid=None,
-            locations=["denver"], techs=[])
+            locations=["denver"], techs=[], employment=None)
     # 24-25: expired — must be invisible in every number above
     job(**be, status="expired", arrangement="onsite", level="senior",
         salary_mid=999_000, locations=["sf"], techs=[("python", "required")])

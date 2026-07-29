@@ -127,4 +127,5 @@ def facet_counts(db: Session, matching, total: int) -> SearchFacets:
     return SearchFacets(
         arrangements=dist(Job.arrangement),
         experience_levels=dist(Job.experience_level),
+        employment_types=dist(Job.employment_type),
     )

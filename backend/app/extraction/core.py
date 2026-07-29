@@ -8,6 +8,7 @@ this with persistence.
 from dataclasses import dataclass, field
 from decimal import Decimal
 
+from app.extraction.employment import classify_employment_type
 from app.extraction.experience import (
     extract_years_of_experience,
     infer_arrangement,
@@ -22,7 +23,10 @@ from app.extraction.text import html_to_text
 from app.extraction.title import TitleResult, canonicalize_title
 
 # v3 (M8): extraction now also emits sanitized display HTML (safe_html).
-EXTRACTOR_VERSION = 3
+# v4: extraction infers employment_type from title + description text for
+# jobs whose source declared none. The bump re-runs the whole corpus, which
+# is what backfills the column for postings ingested before this landed.
+EXTRACTOR_VERSION = 4
 
 
 @dataclass(frozen=True)
@@ -49,6 +53,7 @@ class DocumentExtraction:
     arrangement: str | None = None
     title: TitleResult | None = None
     experience_level: str | None = None
+    employment_type: str | None = None
 
 
 def extract_document(
@@ -57,6 +62,7 @@ def extract_document(
     index: TaxonomyIndex,
     matcher: TechnologyMatcher,
     location_is_remote: bool = False,
+    declared_employment_type: str | None = None,
 ) -> DocumentExtraction:
     text = html_to_text(description_html)
     result = DocumentExtraction(text=text, safe_html=sanitize_html(description_html))
@@ -73,6 +79,9 @@ def extract_document(
     result.years_of_experience = extract_years_of_experience(text)
     result.arrangement = infer_arrangement(text, location_is_remote)
     result.title = canonicalize_title(raw_title, index)
+    result.employment_type = classify_employment_type(
+        raw_title, text, declared=declared_employment_type
+    )
 
     # Title tokens are the strongest level signal; YOE is the fallback.
     if result.title.level:

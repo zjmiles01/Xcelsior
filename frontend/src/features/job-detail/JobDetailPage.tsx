@@ -17,6 +17,14 @@ const EXPERIENCE_LABELS: Record<string, string> = {
   staff_plus: 'Staff+',
 }
 
+const EMPLOYMENT_TYPE_LABELS: Record<string, string> = {
+  full_time: 'Full-time',
+  part_time: 'Part-time',
+  internship: 'Internship',
+  contract: 'Contract',
+  temporary: 'Temporary',
+}
+
 export function JobDetailPage() {
   const { id } = useParams()
   const { data: job, isPending, isError } = useJobDetail(Number(id))
@@ -39,6 +47,11 @@ export function JobDetailPage() {
             <span className="fact">{EXPERIENCE_LABELS[job.experience_level]}</span>
           )}
           {job.arrangement && <span className="fact">{job.arrangement}</span>}
+          {job.employment_type && job.employment_type !== 'unknown' && (
+            <span className="fact">
+              {EMPLOYMENT_TYPE_LABELS[job.employment_type] ?? job.employment_type}
+            </span>
+          )}
           {job.locations.map((loc) => (
             <span key={loc.raw_text} className="fact fact--muted">
               {loc.raw_text}

@@ -19,6 +19,25 @@ const LEVEL_LABELS: Record<string, string> = {
   staff_plus: 'Staff+',
 }
 
+// 'unknown' is deliberately not offered: it is a classifier outcome, not
+// something a job seeker searches for. The API still accepts it.
+const EMPLOYMENT_TYPES = [
+  ['full_time', 'Full-time'],
+  ['part_time', 'Part-time'],
+  ['internship', 'Internship'],
+  ['contract', 'Contract'],
+  ['temporary', 'Temporary'],
+] as const
+
+const EMPLOYMENT_TYPE_LABELS: Record<string, string> = {
+  full_time: 'Full-time',
+  part_time: 'Part-time',
+  internship: 'Internship',
+  contract: 'Contract',
+  temporary: 'Temporary',
+  unknown: 'Unspecified type',
+}
+
 const CATEGORY_LABELS: Record<string, string> = {
   languages: 'Languages',
   frameworks: 'Frameworks',
@@ -80,6 +99,13 @@ export function FilterPanel({
       key: `exp:${filters.experience_level}`,
       label: LEVEL_LABELS[filters.experience_level] ?? filters.experience_level,
       onRemove: () => onChange({ ...filters, experience_level: undefined }),
+    })
+  }
+  if (filters.employment_type) {
+    chips.push({
+      key: `emp:${filters.employment_type}`,
+      label: EMPLOYMENT_TYPE_LABELS[filters.employment_type] ?? filters.employment_type,
+      onRemove: () => onChange({ ...filters, employment_type: undefined }),
     })
   }
   if (filters.salary_min !== undefined) {
@@ -206,6 +232,25 @@ export function FilterPanel({
           {ARRANGEMENTS.map((a) => (
             <option key={a} value={a}>
               {cap(a)}
+            </option>
+          ))}
+        </select>
+
+        <select
+          className="filter-pill"
+          aria-label="Employment type"
+          value={filters.employment_type ?? ''}
+          onChange={(e) =>
+            onChange({
+              ...filters,
+              employment_type: (e.target.value || undefined) as JobFilters['employment_type'],
+            })
+          }
+        >
+          <option value="">Employment type</option>
+          {EMPLOYMENT_TYPES.map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
             </option>
           ))}
         </select>

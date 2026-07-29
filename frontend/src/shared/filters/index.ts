@@ -16,6 +16,7 @@ export interface JobFilters {
   tech?: string[]
   arrangement?: 'onsite' | 'hybrid' | 'remote'
   experience_level?: 'entry' | 'mid' | 'senior' | 'staff_plus'
+  employment_type?: 'full_time' | 'part_time' | 'internship' | 'contract' | 'temporary' | 'unknown'
   salary_min?: number
 }
 
@@ -43,6 +44,7 @@ export function toSearchParams(params: JobListParams): URLSearchParams {
   }
   if (params.arrangement) searchParams.set('arrangement', params.arrangement)
   if (params.experience_level) searchParams.set('experience_level', params.experience_level)
+  if (params.employment_type) searchParams.set('employment_type', params.employment_type)
   if (params.salary_min !== undefined) searchParams.set('salary_min', String(params.salary_min))
   if (params.sort) searchParams.set('sort', params.sort)
   if (params.limit !== undefined) searchParams.set('limit', String(params.limit))
@@ -67,6 +69,8 @@ export function fromSearchParams(searchParams: URLSearchParams): JobFilters {
   if (arrangement) filters.arrangement = arrangement as JobFilters['arrangement']
   const level = searchParams.get('experience_level')
   if (level) filters.experience_level = level as JobFilters['experience_level']
+  const employmentType = searchParams.get('employment_type')
+  if (employmentType) filters.employment_type = employmentType as JobFilters['employment_type']
   const salaryMin = Number(searchParams.get('salary_min'))
   if (salaryMin) filters.salary_min = salaryMin
   return filters
@@ -84,6 +88,7 @@ export function fromApiFilters(api: ApiJobFilters): JobFilters {
   if (api.technologies && api.technologies.length > 0) filters.tech = api.technologies
   if (api.arrangement) filters.arrangement = api.arrangement
   if (api.experience_level) filters.experience_level = api.experience_level
+  if (api.employment_type) filters.employment_type = api.employment_type
   if (api.salary_min != null) filters.salary_min = api.salary_min
   return filters
 }

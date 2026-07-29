@@ -94,6 +94,9 @@ class IngestionRepository:
             description=posting.description_html,
             apply_url=posting.apply_url,
             posted_at=posting.posted_at,
+            # Only what the source declared; NULL here means extraction
+            # still owes this job a text-inferred type.
+            employment_type=posting.employment_type,
         )
         self.db.add(job)
         self.db.flush()
@@ -105,6 +108,10 @@ class IngestionRepository:
         job.description = posting.description_html
         job.apply_url = posting.apply_url
         job.posted_at = posting.posted_at
+        # Re-declared by the source, or cleared so the re-run of extraction
+        # below re-infers it from the changed text rather than keeping a
+        # type derived from text that no longer exists.
+        job.employment_type = posting.employment_type
         job.last_seen_at = datetime.now(UTC)
         job.status = "active"  # a re-seen posting is alive again
         # Changed text invalidates everything extracted from the old text;

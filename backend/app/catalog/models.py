@@ -44,7 +44,11 @@ class Job(Base):
     description_html: Mapped[str | None] = mapped_column(Text)
     apply_url: Mapped[str | None]
 
-    employment_type: Mapped[str | None]  # full_time | part_time | contract | internship
+    # Vocabulary in app/catalog/employment.py: full_time | part_time |
+    # internship | contract | temporary | unknown. Declared by the source
+    # when it says so, otherwise inferred by extraction. NULL means neither
+    # has run yet (rows ingested before employment typing landed).
+    employment_type: Mapped[str | None] = mapped_column(index=True)
     arrangement: Mapped[str | None]  # onsite | hybrid | remote
     experience_level: Mapped[str | None]  # entry | mid | senior | staff_plus
     years_of_experience: Mapped[int | None]

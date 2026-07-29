@@ -49,3 +49,43 @@ def test_missing_optional_fields_do_not_crash() -> None:
     assert posting.description_html is None
     assert posting.location_texts == []
     assert posting.posted_at is None
+    assert posting.employment_type is None
+
+
+class TestEmploymentType:
+    def test_declared_in_board_metadata(self, payload: dict) -> None:
+        payload["metadata"].append(
+            {"id": 1, "name": "Employment Type", "value": "Intern", "value_type": "single_select"}
+        )
+
+        assert map_posting(payload).employment_type == "internship"
+
+    def test_alternate_metadata_names(self, payload: dict) -> None:
+        payload["metadata"] = [{"id": 1, "name": "Job Type", "value": "Part-time"}]
+
+        assert map_posting(payload).employment_type == "part_time"
+
+    def test_multi_select_metadata_value(self, payload: dict) -> None:
+        payload["metadata"] = [{"id": 1, "name": "Worker Type", "value": ["Contract"]}]
+
+        assert map_posting(payload).employment_type == "contract"
+
+    def test_unrelated_metadata_is_ignored(self, payload: dict) -> None:
+        # The recorded payload's metadata is all division/req-type noise.
+        # Guessing from it would be worse than leaving the text classifier
+        # to do the job downstream.
+        assert map_posting(payload).employment_type is None
+
+    def test_unrecognized_value_is_left_to_extraction(self, payload: dict) -> None:
+        payload["metadata"] = [{"id": 1, "name": "Employment Type", "value": "Band 4"}]
+
+        assert map_posting(payload).employment_type is None
+
+    def test_null_and_malformed_metadata_do_not_crash(self, payload: dict) -> None:
+        payload["metadata"] = [
+            "not-a-dict",
+            {"id": 1, "name": "Employment Type", "value": None},
+            {"id": 2, "name": "Employment Type", "value": "Full-time"},
+        ]
+
+        assert map_posting(payload).employment_type == "full_time"

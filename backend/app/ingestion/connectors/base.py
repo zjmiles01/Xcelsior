@@ -24,6 +24,10 @@ class NormalizedPosting:
     location_texts: list[str]
     posted_at: datetime | None
     content_hash: str
+    # What the source itself declared, mapped onto our vocabulary
+    # (app/catalog/employment.py). None when the board says nothing we
+    # recognize — extraction then infers it from the text.
+    employment_type: str | None = None
     payload: dict = field(repr=False, default_factory=dict)
 
 

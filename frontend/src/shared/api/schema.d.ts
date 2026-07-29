@@ -616,6 +616,8 @@ export interface components {
         JobFilters: {
             /** Arrangement */
             arrangement?: ("onsite" | "hybrid" | "remote") | null;
+            /** Employment Type */
+            employment_type?: ("full_time" | "part_time" | "internship" | "contract" | "temporary" | "unknown") | null;
             /** Experience Level */
             experience_level?: ("entry" | "mid" | "senior" | "staff_plus") | null;
             /** Location */
@@ -1088,6 +1090,8 @@ export interface components {
         SearchFacets: {
             /** Arrangements */
             arrangements: components["schemas"]["FacetBucket"][];
+            /** Employment Types */
+            employment_types: components["schemas"]["FacetBucket"][];
             /** Experience Levels */
             experience_levels: components["schemas"]["FacetBucket"][];
         };
@@ -1310,6 +1314,8 @@ export interface operations {
                 tech?: string[];
                 arrangement?: ("onsite" | "hybrid" | "remote") | null;
                 experience_level?: ("entry" | "mid" | "senior" | "staff_plus") | null;
+                /** @description Employment type, e.g. internship — 'unknown' also matches untyped jobs */
+                employment_type?: ("full_time" | "part_time" | "internship" | "contract" | "temporary" | "unknown") | null;
                 /** @description Annual USD floor */
                 salary_min?: number | null;
             };
@@ -1461,6 +1467,8 @@ export interface operations {
                 tech?: string[];
                 arrangement?: ("onsite" | "hybrid" | "remote") | null;
                 experience_level?: ("entry" | "mid" | "senior" | "staff_plus") | null;
+                /** @description Employment type, e.g. internship — 'unknown' also matches untyped jobs */
+                employment_type?: ("full_time" | "part_time" | "internship" | "contract" | "temporary" | "unknown") | null;
                 /** @description Annual USD floor */
                 salary_min?: number | null;
             };
@@ -1671,6 +1679,8 @@ export interface operations {
                 tech?: string[];
                 arrangement?: ("onsite" | "hybrid" | "remote") | null;
                 experience_level?: ("entry" | "mid" | "senior" | "staff_plus") | null;
+                /** @description Employment type, e.g. internship — 'unknown' also matches untyped jobs */
+                employment_type?: ("full_time" | "part_time" | "internship" | "contract" | "temporary" | "unknown") | null;
                 /** @description Annual USD floor */
                 salary_min?: number | null;
             };
@@ -1882,6 +1892,8 @@ export interface operations {
                 tech?: string[];
                 arrangement?: ("onsite" | "hybrid" | "remote") | null;
                 experience_level?: ("entry" | "mid" | "senior" | "staff_plus") | null;
+                /** @description Employment type, e.g. internship — 'unknown' also matches untyped jobs */
+                employment_type?: ("full_time" | "part_time" | "internship" | "contract" | "temporary" | "unknown") | null;
                 /** @description Annual USD floor */
                 salary_min?: number | null;
             };

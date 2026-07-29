@@ -923,6 +923,25 @@
             ],
             "title": "Arrangement"
           },
+          "employment_type": {
+            "anyOf": [
+              {
+                "enum": [
+                  "full_time",
+                  "part_time",
+                  "internship",
+                  "contract",
+                  "temporary",
+                  "unknown"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Employment Type"
+          },
           "experience_level": {
             "anyOf": [
               {
@@ -2351,6 +2370,13 @@
             "title": "Arrangements",
             "type": "array"
           },
+          "employment_types": {
+            "items": {
+              "$ref": "#/components/schemas/FacetBucket"
+            },
+            "title": "Employment Types",
+            "type": "array"
+          },
           "experience_levels": {
             "items": {
               "$ref": "#/components/schemas/FacetBucket"
@@ -2361,7 +2387,8 @@
         },
         "required": [
           "arrangements",
-          "experience_levels"
+          "experience_levels",
+          "employment_types"
         ],
         "title": "SearchFacets",
         "type": "object"
@@ -3108,6 +3135,32 @@
             }
           },
           {
+            "description": "Employment type, e.g. internship \u2014 'unknown' also matches untyped jobs",
+            "in": "query",
+            "name": "employment_type",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "full_time",
+                    "part_time",
+                    "internship",
+                    "contract",
+                    "temporary",
+                    "unknown"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Employment type, e.g. internship \u2014 'unknown' also matches untyped jobs",
+              "title": "Employment Type"
+            }
+          },
+          {
             "description": "Annual USD floor",
             "in": "query",
             "name": "salary_min",
@@ -3447,6 +3500,32 @@
                 }
               ],
               "title": "Experience Level"
+            }
+          },
+          {
+            "description": "Employment type, e.g. internship \u2014 'unknown' also matches untyped jobs",
+            "in": "query",
+            "name": "employment_type",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "full_time",
+                    "part_time",
+                    "internship",
+                    "contract",
+                    "temporary",
+                    "unknown"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Employment type, e.g. internship \u2014 'unknown' also matches untyped jobs",
+              "title": "Employment Type"
             }
           },
           {
@@ -3860,6 +3939,32 @@
             }
           },
           {
+            "description": "Employment type, e.g. internship \u2014 'unknown' also matches untyped jobs",
+            "in": "query",
+            "name": "employment_type",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "full_time",
+                    "part_time",
+                    "internship",
+                    "contract",
+                    "temporary",
+                    "unknown"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Employment type, e.g. internship \u2014 'unknown' also matches untyped jobs",
+              "title": "Employment Type"
+            }
+          },
+          {
             "description": "Annual USD floor",
             "in": "query",
             "name": "salary_min",
@@ -4247,6 +4352,32 @@
                 }
               ],
               "title": "Experience Level"
+            }
+          },
+          {
+            "description": "Employment type, e.g. internship \u2014 'unknown' also matches untyped jobs",
+            "in": "query",
+            "name": "employment_type",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "full_time",
+                    "part_time",
+                    "internship",
+                    "contract",
+                    "temporary",
+                    "unknown"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Employment type, e.g. internship \u2014 'unknown' also matches untyped jobs",
+              "title": "Employment Type"
             }
           },
           {

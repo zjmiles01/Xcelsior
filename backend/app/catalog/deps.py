@@ -9,6 +9,7 @@ from typing import Annotated
 
 from fastapi import Query
 
+from app.catalog.employment import EmploymentType
 from app.catalog.filters import DEFAULT_RADIUS, Arrangement, ExperienceLevel, JobFilters
 
 
@@ -20,6 +21,10 @@ def filters_from_query(
     tech: Annotated[list[str], Query(description="Technology slugs (AND)")] = [],  # noqa: B006
     arrangement: Annotated[Arrangement | None, Query()] = None,
     experience_level: Annotated[ExperienceLevel | None, Query()] = None,
+    employment_type: Annotated[
+        EmploymentType | None,
+        Query(description="Employment type, e.g. internship — 'unknown' also matches untyped jobs"),
+    ] = None,
     salary_min: Annotated[int | None, Query(ge=0, description="Annual USD floor")] = None,
 ) -> JobFilters:
     return JobFilters(
@@ -30,5 +35,6 @@ def filters_from_query(
         technologies=tuple(tech),
         arrangement=arrangement,
         experience_level=experience_level,
+        employment_type=employment_type,
         salary_min=salary_min,
     )

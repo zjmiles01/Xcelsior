@@ -38,6 +38,7 @@ class SearchFacets(BaseModel):
 
     arrangements: list[FacetBucket]
     experience_levels: list[FacetBucket]
+    employment_types: list[FacetBucket]
 
 
 class RelaxationOption(BaseModel):

@@ -17,6 +17,7 @@ from dataclasses import dataclass
 from sqlalchemy import Select, exists, func, select
 from sqlalchemy.orm import Session
 
+from app.catalog.employment import UNKNOWN
 from app.catalog.filters import JobFilters
 from app.catalog.models import Job, JobLocation
 from app.catalog.taxonomy_models import CanonicalTitle, JobTechnology, Technology
@@ -108,6 +109,18 @@ def job_predicate(resolved: ResolvedFilters) -> Select:
 
     if f.experience_level is not None:
         stmt = stmt.where(Job.experience_level == f.experience_level)
+
+    if f.employment_type is not None:
+        if f.employment_type == UNKNOWN:
+            # NULL means "never classified" (ingested before employment
+            # typing, or awaiting the next extraction run) and 'unknown'
+            # means "classified, no signal found". Both are the same answer
+            # to the user's question, so one filter returns both.
+            stmt = stmt.where(
+                (Job.employment_type.is_(None)) | (Job.employment_type == UNKNOWN)
+            )
+        else:
+            stmt = stmt.where(Job.employment_type == f.employment_type)
 
     if f.salary_min is not None:
         # A job qualifies if any part of its disclosed range clears the
