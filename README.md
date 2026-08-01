@@ -64,6 +64,26 @@ Every insight is generated from underlying job listings rather than manually cur
 - Compare against job requirements
 - Identify matching opportunities
 
+## Account Deletion
+
+To permanently delete your Xcelsior account:
+
+1. Sign in to Xcelsior.
+
+2. Click your email address in the top navigation bar.
+
+3. This opens the **Account** page.
+
+4. Select **Delete Account** in the danger zone.
+
+5. Type `DELETE` in the confirmation field.
+
+6. Click the final **Delete Account** button.
+
+
+
+Deleting your account permanently removes your account and associated personal data, including your profile, uploaded resume information, extracted skills, saved jobs, and active sessions.
+
 # Architecture
 ```
                  Job Sources
