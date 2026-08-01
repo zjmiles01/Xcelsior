@@ -1,6 +1,7 @@
 """Database services for account and session lifecycle management."""
 
 from datetime import UTC, datetime, timedelta
+
 from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session as DbSession
@@ -12,6 +13,7 @@ from app.accounts.security import (
     hash_token,
     verify_password,
 )
+
 
 class EmailAlreadyRegistered(Exception):
     """Signup with an email that already has an account."""
