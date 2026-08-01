@@ -4,6 +4,7 @@ import structlog
 from fastapi import FastAPI, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.accounts.router import account_router
 from app.accounts.router import router as accounts_router
 from app.analytics.router import router as analytics_router
 from app.catalog.query import UnknownFilterValue
@@ -65,6 +66,7 @@ def create_app() -> FastAPI:
     app.include_router(catalog_router, prefix="/api/v1")
     app.include_router(analytics_router, prefix="/api/v1")
     app.include_router(accounts_router, prefix="/api/v1")
+    app.include_router(account_router, prefix="/api/v1")
     app.include_router(profile_router, prefix="/api/v1")
     app.include_router(saved_jobs_router, prefix="/api/v1")
 

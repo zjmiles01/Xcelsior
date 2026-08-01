@@ -1,14 +1,6 @@
-"""Authentication endpoints (M10): signup, login, logout, current user.
+"""Authentication endpoints for signup, login, logout, current-user lookup,
+ and authenticated account deletion."""
 
-All four live under `/api/v1/auth`. Signup and login open a server-side
-session and set the session as an HTTP-only cookie; the raw token is never
-returned in a body, so it can never reach `localStorage` or JavaScript.
-Logout revokes the session and clears the cookie. `me` is the frontend's
-way to learn whether the browser holds a live session (401 = anonymous).
-
-These routes are public by necessity (you cannot log in while logged out);
-they are still rate-limited like the rest of `/api/v1`.
-"""
 
 from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from sqlalchemy.orm import Session as DbSession
@@ -17,16 +9,19 @@ from app.accounts.deps import require_user
 from app.accounts.models import User
 from app.accounts.schemas import LoginRequest, SignupRequest, UserOut
 from app.accounts.service import (
+    AccountDeletionFailed,
     EmailAlreadyRegistered,
     authenticate,
     create_session,
     create_user,
+    delete_account,
     delete_session,
 )
 from app.core.config import Settings, get_settings
 from app.core.db import get_db
 
 router = APIRouter(prefix="/auth", tags=["auth"])
+account_router = APIRouter(prefix="/account", tags=["account"])
 
 
 def _set_session_cookie(response: Response, token: str, settings: Settings) -> None:
@@ -106,3 +101,32 @@ def logout(
 @router.get("/me", response_model=UserOut)
 def me(user: User = Depends(require_user)) -> User:
     return user
+
+
+@account_router.delete("", status_code=204)
+def delete_current_account(
+    response: Response,
+    db: DbSession = Depends(get_db),
+    settings: Settings = Depends(get_settings),
+    user: User = Depends(require_user),
+) -> None:
+    """Permanently delete the signed-in account and everything it owns —
+    resumes, candidate profiles and their extracted facts, saved jobs, and
+    every session. Irreversible; the UI gates it behind a typed
+    confirmation.
+
+    Ownership comes from the session (`require_user`), never from the
+    request, so a caller cannot delete anyone but themselves; anonymous
+    callers get the usual 401. On success the session is already revoked
+    server-side (it cascades with the user) and the cookie is cleared, so
+    the browser stops presenting a token that resolves to nothing. On
+    failure the transaction rolled back: nothing was deleted, the session
+    still works, and the error names no user."""
+    try:
+        delete_account(db, user)
+    except AccountDeletionFailed as exc:
+        raise HTTPException(
+            status_code=500,
+            detail="Could not delete your account. Nothing was deleted — please try again.",
+        ) from exc
+    _clear_session_cookie(response, settings)

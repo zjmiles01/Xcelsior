@@ -49,6 +49,8 @@
   --warn: #8a6100;
   --warn-bg: #f5ecd4;
   --alert: #b4442c;
+  --alert-bg: #f8e7e1;
+  --alert-line: #e9c6ba;
 
   --radius: 14px;
   --radius-sm: 9px;
@@ -225,6 +227,8 @@ a:hover {
   margin-left: auto;
 }
 
+/* The signed-in email, which doubles as the link into account settings: kept
+   quiet enough to read as a label, with the affordance only on hover. */
 .nav-user {
   color: var(--muted);
   font-size: 0.9rem;
@@ -232,6 +236,13 @@ a:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-decoration: none;
+}
+
+.nav-user:hover,
+.nav-user.active {
+  color: var(--ink);
+  text-decoration: underline;
 }
 
 .nav-logout {
@@ -391,6 +402,13 @@ textarea:focus-visible {
 
 .banner a {
   color: var(--link);
+}
+
+/* Same shape, resolved tone — for a completed action rather than a caution. */
+.banner--success {
+  background: var(--good-bg);
+  border-color: #cfe0c6;
+  color: #2f5a3c;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -1467,6 +1485,99 @@ textarea:focus-visible {
 .auth-hint {
   margin: -0.4rem 0 0;
   font-size: 0.85rem;
+}
+
+/* ── Account settings & the danger zone (M11) ──────────────────────────── */
+
+.account-page {
+  max-width: 44rem;
+}
+
+/* Irreversible actions live in their own fenced-off block: alert-tinted, set
+   apart from the page's warm neutrals so it never reads as one more control. */
+.danger-zone {
+  margin-top: 2.5rem;
+  padding: 1.1rem 1.2rem;
+  background: var(--alert-bg);
+  border: 1px solid var(--alert-line);
+  border-radius: var(--radius);
+}
+
+.danger-zone__title {
+  margin: 0 0 0.4rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--alert);
+}
+
+.danger-zone__body {
+  margin: 0 0 1rem;
+  max-width: 58ch;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+/* ── Modal dialog ──────────────────────────────────────────────────────── */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(34, 31, 25, 0.45);
+}
+
+.modal {
+  width: min(30rem, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.modal__title {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.modal__body {
+  margin: 0 0 1.1rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.modal__form label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.modal__form code {
+  background: var(--inset);
+  border-radius: 4px;
+  padding: 0.05rem 0.3rem;
+  font-size: 0.9em;
+}
+
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
 }
 
 /* ── Saved jobs surfaces (M10) ─────────────────────────────────────────── */

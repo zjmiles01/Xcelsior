@@ -76,7 +76,8 @@ function AboutLink({ onNavigate }: { onNavigate: () => void }) {
 /** The right side of the nav reflects auth state (M10): anonymous visitors
  * see Log in / Sign up; signed-in users see their personal surface plus a
  * logout control. Personal links are hidden (not just gated) when logged out,
- * so the public browse experience stays uncluttered. */
+ * so the public browse experience stays uncluttered. The email doubles as the
+ * way into account settings (M11), the convention users already expect. */
 function AuthNav({ onNavigate }: { onNavigate: () => void }) {
   const { data: user, isPending } = useCurrentUser()
   const logout = useLogout()
@@ -105,9 +106,9 @@ function AuthNav({ onNavigate }: { onNavigate: () => void }) {
       <NavLink to="/profile" className="nav-link" onClick={onNavigate}>
         Profile
       </NavLink>
-      <span className="nav-user" title={user.email}>
+      <NavLink to="/account" className="nav-link nav-user" title={user.email} onClick={onNavigate}>
         {user.email}
-      </span>
+      </NavLink>
       <button
         type="button"
         className="btn btn--link nav-logout"

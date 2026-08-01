@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 
+import { AccountPage } from '../features/account/AccountPage'
 import { LoginPage, SignupPage } from '../features/auth/AuthPage'
 import { RequireAuth } from '../features/auth/RequireAuth'
 import { DashboardPage } from '../features/dashboard/DashboardPage'
@@ -35,6 +36,7 @@ export const router = createBrowserRouter([
         element: <RequireAuth><MatchesPage /></RequireAuth>,
       },
       { path: '/saved', element: <RequireAuth><SavedJobsPage /></RequireAuth> },
+      { path: '/account', element: <RequireAuth><AccountPage /></RequireAuth> },
     ],
   },
 ])

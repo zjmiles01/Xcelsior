@@ -1,31 +1,9 @@
-"""User accounts and server-side sessions (M10).
-
-Xcelsior graduates from a single shared dev token (M8) to real multi-user
-accounts. Two tables:
-
-- `users` — one row per account: a case-insensitively-unique email and an
-  Argon2 password hash. No plaintext password is ever stored.
-- `sessions` — server-side session records. The cookie holds an opaque
-  random token; only its SHA-256 hash lands here, so a database leak does
-  not hand an attacker live sessions. Sessions are revocable (logout, or a
-  future "sign out everywhere") precisely because they are server-side —
-  the deliberate alternative to a self-contained, un-revocable signed token
-  in the browser.
-
-Ownership of personal data hangs off `users.id`: `resumes`,
-`candidate_profiles`, and `saved_jobs` all carry a `user_id` (see
-`app/profile/models.py`), and every personal-data query is scoped to the
-authenticated user, never to an id supplied by the client.
-"""
+"""User account, session, ownership, and cascading deletion models."""
 
 from datetime import datetime
-
 from sqlalchemy import DateTime, ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
 from app.core.db import Base
-
-
 class User(Base):
     __tablename__ = "users"
 

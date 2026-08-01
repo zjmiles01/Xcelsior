@@ -1,14 +1,13 @@
 import { type FormEvent, useState } from 'react'
-import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useSearchParams } from 'react-router-dom'
 
 import { ApiError } from '../../shared/api/client'
 import { type Credentials, useLogin, useSignup } from './api'
 
 type Mode = 'login' | 'signup'
 
-/** Where to go after authenticating: the `redirect` the guard attached, or
- * the profile onboarding by default. Only same-origin paths are honored, so
- * a crafted `redirect=https://evil` can never bounce the user off-site. */
+/** Returns the safe post-authentication redirect path. */
+
 function safeRedirect(raw: string | null): string {
   if (!raw) return '/profile'
   const decoded = decodeURIComponent(raw)
@@ -18,7 +17,12 @@ function safeRedirect(raw: string | null): string {
 function AuthForm({ mode }: { mode: Mode }) {
   const navigate = useNavigate()
   const [params] = useSearchParams()
+  const location = useLocation()
   const target = safeRedirect(params.get('redirect'))
+
+  // Displays a one-time confirmation after account deletion.
+
+  const justDeleted = (location.state as { accountDeleted?: boolean } | null)?.accountDeleted
 
   const login = useLogin()
   const signup = useSignup()
@@ -44,6 +48,12 @@ function AuthForm({ mode }: { mode: Mode }) {
           ? 'Log in to upload a resume, run the matcher, and save jobs.'
           : 'Sign up to build your profile and track how close you are to the jobs you want.'}
       </p>
+
+      {justDeleted && (
+        <p className="banner banner--success" role="status">
+          Your account and all of its data have been deleted.
+        </p>
+      )}
 
       <form onSubmit={onSubmit} className="auth-form">
         <label>

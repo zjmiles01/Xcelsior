@@ -77,7 +77,9 @@ class CandidateProfile(Base):
     user_id: Mapped[int] = mapped_column(
         ForeignKey("users.id", ondelete="CASCADE"), index=True
     )
-    resume_id: Mapped[int] = mapped_column(ForeignKey("resumes.id"), unique=True)
+    resume_id: Mapped[int] = mapped_column(
+        ForeignKey("resumes.id", ondelete="CASCADE"), unique=True
+    )
 
     full_name: Mapped[str | None]
     email: Mapped[str | None]
@@ -121,7 +123,9 @@ class ProfileSkill(Base):
     __tablename__ = "profile_skills"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    profile_id: Mapped[int] = mapped_column(ForeignKey("candidate_profiles.id"), index=True)
+    profile_id: Mapped[int] = mapped_column(
+        ForeignKey("candidate_profiles.id", ondelete="CASCADE"), index=True
+    )
     technology_id: Mapped[int | None] = mapped_column(ForeignKey("technologies.id"), index=True)
 
     label: Mapped[str]
@@ -143,7 +147,9 @@ class ProfileExperience(Base):
     __tablename__ = "profile_experiences"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    profile_id: Mapped[int] = mapped_column(ForeignKey("candidate_profiles.id"), index=True)
+    profile_id: Mapped[int] = mapped_column(
+        ForeignKey("candidate_profiles.id", ondelete="CASCADE"), index=True
+    )
 
     company: Mapped[str | None]
     title_raw: Mapped[str]
@@ -172,7 +178,9 @@ class ProfileEducation(Base):
     __tablename__ = "profile_education"
 
     id: Mapped[int] = mapped_column(primary_key=True)
-    profile_id: Mapped[int] = mapped_column(ForeignKey("candidate_profiles.id"), index=True)
+    profile_id: Mapped[int] = mapped_column(
+        ForeignKey("candidate_profiles.id", ondelete="CASCADE"), index=True
+    )
 
     institution: Mapped[str | None]
     degree_raw: Mapped[str | None]

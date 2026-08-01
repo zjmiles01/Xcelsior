@@ -1,15 +1,8 @@
-"""Account and session lifecycle (M10).
-
-Pure DB-facing logic, no HTTP: the router turns these into endpoints and
-cookies, the tests call them directly. Email is normalised (trimmed +
-lowercased) at the single choke point `normalize_email`, so signup, login,
-and the unique index all agree on identity regardless of typed case.
-"""
+"""Database services for account and session lifecycle management."""
 
 from datetime import UTC, datetime, timedelta
-
 from sqlalchemy import select
-from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import IntegrityError, SQLAlchemyError
 from sqlalchemy.orm import Session as DbSession
 
 from app.accounts.models import Session, User
@@ -20,9 +13,14 @@ from app.accounts.security import (
     verify_password,
 )
 
-
 class EmailAlreadyRegistered(Exception):
     """Signup with an email that already has an account."""
+
+
+class AccountDeletionFailed(Exception):
+    """Account deletion did not complete; the transaction was rolled back
+    and the account is untouched. Carries no account detail — the caller
+    logs and reports it, and neither should name the user."""
 
 
 def normalize_email(email: str) -> str:
@@ -97,6 +95,32 @@ def delete_session(db: DbSession, token: str) -> None:
     if session is not None:
         db.delete(session)
         db.commit()
+
+
+def delete_account(db: DbSession, user: User) -> None:
+    """Erase an account and every row that hangs off it, atomically.
+
+    One `DELETE FROM users` is the whole erasure: every ownership edge
+    carries `ON DELETE CASCADE` — sessions, resumes, saved_jobs and
+    candidate_profiles off `users`, the profile fact tables off
+    `candidate_profiles` — so the database, not this function, guarantees
+    that nothing of a deleted account survives. That matters twice over: it
+    holds on *every* path that removes a user (a migration, a psql session,
+    a future admin tool), and it keeps `app.accounts` from having to know
+    the shape of `app.profile`, which sits above it in the layering.
+
+    All-or-nothing. Any failure rolls the transaction back and raises
+    AccountDeletionFailed, so "half a user" is not a state this can leave
+    behind. The caller must treat the session as gone on success — the
+    session rows go with the user, and the cookie the browser still holds
+    resolves to nothing.
+    """
+    try:
+        db.delete(user)
+        db.commit()
+    except SQLAlchemyError as exc:
+        db.rollback()
+        raise AccountDeletionFailed("account deletion rolled back") from exc
 
 
 def _expires_at_utc(value: datetime) -> datetime:

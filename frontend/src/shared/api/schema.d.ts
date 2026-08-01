@@ -4,6 +4,37 @@
  */
 
 export interface paths {
+    "/api/v1/account": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /**
+         * Delete Current Account
+         * @description Permanently delete the signed-in account and everything it owns —
+         *     resumes, candidate profiles and their extracted facts, saved jobs, and
+         *     every session. Irreversible; the UI gates it behind a typed
+         *     confirmation.
+         *
+         *     Ownership comes from the session (`require_user`), never from the
+         *     request, so a caller cannot delete anyone but themselves; anonymous
+         *     callers get the usual 401. On success the session is already revoked
+         *     server-side (it cascades with the user) and the cookie is cleared, so
+         *     the browser stops presenting a token that resolves to nothing. On
+         *     failure the transaction rolled back: nothing was deleted, the session
+         *     still works, and the error names no user.
+         */
+        delete: operations["delete_current_account_api_v1_account_delete"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v1/analysis": {
         parameters: {
             query?: never;
@@ -1300,6 +1331,24 @@ export interface components {
 }
 export type $defs = Record<string, never>;
 export interface operations {
+    delete_current_account_api_v1_account_delete: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful Response */
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     analysis_api_v1_analysis_get: {
         parameters: {
             query?: {

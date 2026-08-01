@@ -41,6 +41,13 @@ describe('apiSend', () => {
     )
   })
 
+  it('falls back to the problem title when there is no detail', async () => {
+    // FastAPI HTTPException detail lands in `title` (backend core/errors.py),
+    // so the user must still see the server's sentence, not our URL.
+    global.fetch = fetchReturning(500, { status: 500, title: 'Nothing was deleted' })
+    await expect(apiSend('DELETE', '/account')).rejects.toThrow('Nothing was deleted')
+  })
+
   it('sets a JSON content-type for object bodies', async () => {
     const spy = fetchReturning(200, {})
     global.fetch = spy

@@ -1,12 +1,4 @@
-// Typed API transport. Response types come from src/shared/api/types.ts,
-// which aliases the OpenAPI-generated schema — regenerate with
-// `npm run codegen` after any backend contract change (CI enforces sync).
-//
-// Authentication is a same-origin, HTTP-only session cookie (M10): the SPA
-// and API share an origin (Vite proxies /api in dev, one host in prod), so
-// the browser attaches the cookie automatically. `credentials: 'same-origin'`
-// makes that explicit; there is no token in JavaScript to attach.
-
+// Typed API client using OpenAPI-generated types and same-origin session cookies.
 const FETCH_OPTS: RequestInit = { credentials: 'same-origin' }
 
 export class ApiError extends Error {
@@ -32,9 +24,8 @@ export async function apiGet<T>(path: string, params?: URLSearchParams): Promise
   return response.json() as Promise<T>
 }
 
-/** Mutating request. Pass FormData for uploads, a plain object for JSON.
- * Surfaces the server's problem-details `detail` as the error message so
- * upload rejections (encrypted PDF, no text layer, …) read human. */
+/** Sends a mutating API request and surfaces server error details. */
+
 export async function apiSend<T>(
   method: 'POST' | 'PUT' | 'DELETE',
   path: string,
@@ -53,8 +44,11 @@ export async function apiSend<T>(
   if (!response.ok) {
     let detail = `${method} ${path} failed with ${response.status}`
     try {
-      const problem = (await response.json()) as { detail?: string }
-      if (typeof problem.detail === 'string') detail = problem.detail
+      const problem = (await response.json()) as { detail?: string; title?: string }
+      // Prefer the server-provided error message over a generic request error.
+
+      const message = problem.detail ?? problem.title
+      if (typeof message === 'string') detail = message
     } catch {
       // non-JSON error body: keep the generic message
     }

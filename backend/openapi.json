@@ -3006,6 +3006,21 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/v1/account": {
+      "delete": {
+        "description": "Permanently delete the signed-in account and everything it owns \u2014\nresumes, candidate profiles and their extracted facts, saved jobs, and\nevery session. Irreversible; the UI gates it behind a typed\nconfirmation.\n\nOwnership comes from the session (`require_user`), never from the\nrequest, so a caller cannot delete anyone but themselves; anonymous\ncallers get the usual 401. On success the session is already revoked\nserver-side (it cascades with the user) and the cookie is cleared, so\nthe browser stops presenting a token that resolves to nothing. On\nfailure the transaction rolled back: nothing was deleted, the session\nstill works, and the error names no user.",
+        "operationId": "delete_current_account_api_v1_account_delete",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Delete Current Account",
+        "tags": [
+          "account"
+        ]
+      }
+    },
     "/api/v1/analysis": {
       "get": {
         "operationId": "analysis_api_v1_analysis_get",
